@@ -1,0 +1,10 @@
+description: Paginated response of rulesets
+allOf:
+  - $ref: .\PaginatedResponse.yaml
+  - type: object
+    properties:
+      models:
+        type: array
+        items:
+          $ref: .\Ruleset.yaml
+        readOnly: true

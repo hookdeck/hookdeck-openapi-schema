@@ -1,0 +1,60 @@
+type: object
+description: >-
+  Ruleset object is used to define the retry and alert logic of your webhook
+  connection.
+properties:
+  id:
+    type: string
+    description: ID of the ruleset
+    readOnly: true
+  team_id:
+    type: string
+    description: ID of the workspace
+  name:
+    type: string
+    description: A unique name for the ruleset
+    nullable: true
+    default: null
+  rules:
+    type: array
+    items:
+      $ref: .\Rule.yaml
+    default: []
+    description: Array of rules to apply
+  is_team_default:
+    type: boolean
+    description: Is default ruleset of Workspace
+    default: true
+  archived_at:
+    type: string
+    format: date
+    description: Date the ruleset was archived
+    readOnly: true
+    nullable: true
+    default: null
+  updated_at:
+    type: string
+    format: date
+    description: Date the ruleset was last updated
+    readOnly: true
+  created_at:
+    type: string
+    format: date
+    description: Date the ruleset was created
+    readOnly: true
+example:
+  id: rls_5b3mzbxk83c0k89
+  name: default-ruleset
+  team_id: tm_5b3mzbxk83c0k7i
+  rules:
+    - type: retry
+      count: 5
+      interval: 10800000
+      strategy: linear
+    - type: alert
+      interval: 86400000
+      strategy: last_attempt
+  is_team_default: true
+  archived_at: null
+  updated_at: '2020-03-22T17:45:20.742Z'
+  created_at: '2020-03-22T17:45:20.746Z'

@@ -1,0 +1,8 @@
+type: object
+description: Retry event response
+properties:
+  event:
+    $ref: .\Event.yaml
+  attempt:
+    $ref: .\Attempt.yaml
+    

@@ -1,0 +1,35 @@
+type: object
+description: >-
+  A retry rule will apply automatic retry to failed events associated with that
+  connection or ruleset.
+properties:
+  type:
+    type: string
+    enum:
+      - retry
+    default: retry
+    description: A retry rule must be of type ```retry```
+  strategy:
+    type: string
+    enum:
+      - linear
+      - exponential
+    description: Algorithm to use when calculating delay between retries
+  count:
+    type: number
+    format: int32
+    description: Maximum number of retries to attempt
+  interval:
+    type: number
+    format: int32
+    description: Time in MS between each retry
+required:
+  - type
+  - strategy
+  - count
+  - interval
+example:
+  type: retry
+  strategy: linear
+  count: 5
+  interval: 60000

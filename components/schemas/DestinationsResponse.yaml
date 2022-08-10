@@ -1,0 +1,10 @@
+description: Paginated response of destination
+allOf:
+  - $ref: .\PaginatedResponse.yaml
+  - type: object
+    properties:
+      models:
+        type: array
+        items:
+          $ref: .\Destination.yaml
+        readOnly: true

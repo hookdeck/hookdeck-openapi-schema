@@ -1,0 +1,7 @@
+description: >-
+  A rule can be applied to either a ```Ruleset``` or ```Connection rules```
+  field. Each rule has a required type which is unique to that resource rules.
+oneOf:
+  - $ref: .\RetryRule.yaml
+  - $ref: .\AlertRule.yaml
+  - $ref: .\FilterRule.yaml

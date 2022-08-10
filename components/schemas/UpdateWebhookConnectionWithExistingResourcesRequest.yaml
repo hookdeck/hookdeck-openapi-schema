@@ -1,0 +1,11 @@
+description: Request body for webhook connection update with existing resources
+allOf:
+  - $ref: .\UpdateWebhookConnectionRequest.yaml
+  - type: object
+    properties:
+      ruleset_id:
+        type: string
+        description: >-
+          ID of a rule to bind to the connection. Default to the Workspace
+          default ruleset
+        writeOnly: true

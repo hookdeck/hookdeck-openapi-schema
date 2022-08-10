@@ -1,0 +1,6 @@
+type: object
+description: Request body for source update
+properties:
+  name:
+    type: string
+    description: Unique name for the source

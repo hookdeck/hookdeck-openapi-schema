@@ -1,0 +1,55 @@
+summary: A single completed attempt
+value:
+  id: atm_kgHSGmGMTXGfQhKArm77tRIp
+  team_id: tm_nlcetVe8k1lMAY0KR0OxNuHr
+  event_id: evt_njCeMZHzNhJWdkkZ7PLCfEw5
+  response_status: 202
+  successful_at: '2021-08-01T21:56:35.181Z'
+  updated_at: '2021-08-01T21:56:35.185Z'
+  created_at: '2021-08-01T21:56:34.905Z'
+  error_code:
+  bulk_retry_id:
+  status: SUCCESSFUL
+  trigger: MANUAL
+  attempt_number: 2
+  delivered_at: '2021-08-01T21:56:35.015Z'
+  responded_at: '2021-08-01T21:56:35.181Z'
+  delivery_latency: 110
+  response_latency: 166
+  archived_at:
+  body:
+    message: The Mock API returns the request data with a randomized status code
+    next_step: Convinced? Update your destination with your own server HTTP URL.
+    mock_status: 202
+    requested_path: "/"
+    received_data:
+      headers:
+        host: mock.hookdeck.com
+        connection: close
+        accept: application/json, text/plain, */*
+        content-type: application/json
+        idempotency-key: evt_njCeMZHzNhJWdkkZ7PLCfEw5
+        x-original-url: "/e/src_9YmY0SHklrv6zBQz78cKGwSW"
+        cookie: ''
+        x-client-version: FirebaseCLI/undefined
+        user-agent: FirebaseCLI/undefined
+        x-hookdeck-eventid: evt_njCeMZHzNhJWdkkZ7PLCfEw5
+        x-hookdeck-attempt-count: '2'
+        x-hookdeck-event-url: http://localhost:3000/events/evt_njCeMZHzNhJWdkkZ7PLCfEw5
+        x-hookdeck-signature: Yhj7PMxNwFtNhZMQ6MFeLJsmC51li2aO4zanCwdld7I=
+        x-hookdeck-source-name: shopify
+        x-newrelic-id: VwQGVlRVDRAFVlJWBggGX1c=
+        x-newrelic-transaction: PxQOWVRRAVBUAQUAUVVWVgACFB8EBw8RVU4aWwAKBgtQAVwFUwdXA1RSBENKQQ9SBgFQBw4AFTs=
+        x-request-id: fed4b172-12f9-4a2d-b629-9de008b2e471
+        x-forwarded-for: 135.19.54.44
+        x-forwarded-proto: https
+        x-forwarded-port: '443'
+        via: 1.1 vegur
+        connect-time: '0'
+        x-request-start: '1627854995250'
+        total-route-time: '0'
+        content-length: '20'
+      body:
+        test: true
+      query: {}
+  requested_url: https://mock.hookdeck.com/

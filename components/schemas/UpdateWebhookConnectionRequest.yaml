@@ -1,0 +1,13 @@
+type: object
+description: Request body for webhook connection update
+properties:
+  name:
+    type: string
+    description: Unique name of the connection for the source
+    writeOnly: true
+  rules:
+    type: array
+    items:
+      $ref: .\Rule.yaml
+    default: []
+    description: Array of rules to apply

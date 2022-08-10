@@ -1,0 +1,4 @@
+description: ISO timestamp of the next rate limit period reset
+schema:
+  type: string
+  format: date-time

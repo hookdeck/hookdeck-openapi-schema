@@ -1,0 +1,19 @@
+description: Request body for webhook connection upsert with existing resources
+allOf:
+  - $ref: .\UpsertWebhookConnectionRequest.yaml
+  - type: object
+    properties:
+      source_id:
+        type: string
+        description: ID of a source to bind to the connection
+        writeOnly: true
+      destination_id:
+        type: string
+        description: ID of a destination to bind to the connection
+        writeOnly: true
+      ruleset_id:
+        type: string
+        description: >-
+          ID of a rule to bind to the connection. Default to the Workspace
+          default ruleset
+        writeOnly: true

@@ -1,0 +1,4 @@
+description: Request per minute limit for the API key
+schema:
+  type: number
+  format: int32

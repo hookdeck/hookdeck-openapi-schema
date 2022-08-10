@@ -1,0 +1,4 @@
+description: Seconds before next request can be made
+schema:
+  type: number
+  format: int32
