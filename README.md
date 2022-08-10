@@ -1,0 +1,2 @@
+# Hookdeck OpenAPI Schema
+
