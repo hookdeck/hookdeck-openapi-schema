@@ -1,0 +1,12 @@
+type: object
+description: Request body for ruleset update
+properties:
+  name:
+    type: string
+    description: Unique name for the source
+  rules:
+    type: array
+    items:
+      $ref: .\Rule.yaml
+    default: []
+    description: Array of rules to apply

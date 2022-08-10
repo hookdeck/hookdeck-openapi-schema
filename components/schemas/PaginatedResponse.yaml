@@ -1,0 +1,41 @@
+type: object
+description: Paginated response model
+properties:
+  pagination:
+    type: object
+    description: Pagination info
+    properties:
+      order_by:
+        type: string
+        default: created_at
+        description: The sortable key to use (options varies base on the resource )
+        readOnly: true
+      dir:
+        type: string
+        enum:
+          - asc
+          - desc
+        default: desc
+        description: The direction of sort
+        readOnly: true
+      limit:
+        type: number
+        format: int32
+        default: 100
+        maximum: 250
+        description: Number of results returned per query
+        readOnly: true
+      next:
+        type: string
+        description: The cursor to provide in the query to get the next set of results
+        readOnly: true
+      prev:
+        type: string
+        description: The cursor to provide in the query to get the previous set of results
+        readOnly: true
+    readOnly: true
+  count:
+    type: number
+    format: int32
+    description: Number of results
+    readOnly: true

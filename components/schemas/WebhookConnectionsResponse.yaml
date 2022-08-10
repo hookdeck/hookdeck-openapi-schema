@@ -1,0 +1,10 @@
+description: Paginated response of webhook connections
+allOf:
+  - $ref: .\PaginatedResponse.yaml
+  - type: object
+    properties:
+      models:
+        type: array
+        items:
+          $ref: .\WebhookConnection.yaml
+        readOnly: true

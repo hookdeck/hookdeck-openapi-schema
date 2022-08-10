@@ -1,0 +1,54 @@
+summary: A single webhook connection
+value:
+  id: web_UfM5ZY2wxLD6sLhDaKMcx5wp
+  team_id: tm_nlcetVe8k1lMAY0KR0OxNuHr
+  archived_at: null
+  updated_at: '2021-08-02T13:52:40.344Z'
+  created_at: '2021-08-01T21:29:41.818Z'
+  paused_at: null
+  name: mock-api
+  rules: []
+  destination:
+    id: des_fYYCay655IHwbOMhIaUXtNq2
+    team_id: tm_nlcetVe8k1lMAY0KR0OxNuHr
+    url: https://mock.hookdeck.com
+    archived_at: null
+    updated_at: '2021-08-02T14:07:54.608Z'
+    created_at: '2021-08-01T21:29:41.785Z'
+    rate_limit: 5
+    rate_limit_period: second
+    cli_path: /
+    path_forwarding_disabled: false
+    name: mock-api
+  ruleset:
+    id: rls_gaqoPgyT17a8x1mBMpKnku8A
+    team_id: tm_nlcetVe8k1lMAY0KR0OxNuHr
+    is_team_default: true
+    archived_at: null
+    updated_at: '2021-08-02T13:52:16.888Z'
+    created_at: '2021-08-01T21:29:36.367Z'
+    name: default-ruleset
+    rules:
+      - type: retry
+        count: 5
+        interval: 10800000
+        strategy: linear
+      - type: alert
+        interval: 86400000
+        strategy: last_attempt
+  source:
+    id: src_9YmY0SHklrv6zBQz78cKGwSW
+    team_id: tm_nlcetVe8k1lMAY0KR0OxNuHr
+    archived_at: null
+    updated_at: '2021-08-02T13:52:17.030Z'
+    created_at: '2021-08-01T21:29:41.788Z'
+    name: shopify
+    url: https://events.hookdeck.com/e/src_9YmY0SHklrv6zBQz78cKGwSW
+  resolved_rules:
+    - type: retry
+      count: 5
+      interval: 10800000
+      strategy: linear
+    - type: alert
+      interval: 86400000
+      strategy: last_attempt

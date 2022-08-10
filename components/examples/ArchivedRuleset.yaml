@@ -1,0 +1,14 @@
+summary: A single ruleset
+value:
+  id: rls_YZCDPNVHORE8BZ86aDRyRMtZ
+  team_id: tm_nlcetVe8k1lMAY0KR0OxNuHr
+  is_team_default: false
+  archived_at: '2021-08-02T14:12:57.236Z'
+  updated_at: '2021-08-02T14:12:57.236Z'
+  created_at: '2021-08-02T14:10:47.399Z'
+  name: example-ruleset
+  rules:
+  - type: retry
+    count: 10
+    interval: 60000
+    strategy: linear

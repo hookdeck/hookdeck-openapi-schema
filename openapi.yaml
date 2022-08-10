@@ -1,0 +1,424 @@
+openapi: 3.0.1
+info:
+  version: '2022-03-01'
+  title: Hookdeck Admin REST API
+  description: >-
+    # Getting started
+
+    Our API allows you to set up your connections, retrieve your events and
+    perform various actions such as retries.
+
+
+    Explore our data, browse the descriptions of the available attributes and
+    see examples of working requests and responses.
+
+
+    >Hookdeck API was historically available on api.hookdeck.io and has been
+    moved to api.hookdeck.com. The former will remain functional but consider
+    migrating to api.hookdeck.com.
+
+    ## Create your account
+
+    To use the API, you'll need an API key that you can retrieve from your
+    account. Sign in or sign up at
+    [https://hookdeck.com/signin](https://hookdeck.com/signin). Each workspace
+    is assigned a unique API key used to authenticate with Hookdeck.
+
+    ## Authentication
+
+    Use **Bearer Token Authentication** to authorize your request. The username
+    is your API Key and the password is blank:
+
+
+    Hookdeck uses API keys via Bearer Token to allow access to the API. You can
+    retrieve your Hookdeck API key in your
+    [dashboard](https://hookdeck.com/dashboard/api).
+
+
+    Hookdeck expects your API key to be included in all your API requests to the
+    server in the header. It would look like the following:
+
+
+    ```Authorization: Bearer $API_KEY```
+
+     > You must replace ```$API_KEY``` with your personal API key.
+
+    > Basic Authentication is also supported with the API key as username and
+    empty password
+
+     ``` 
+    curl "https://api.hookdeck.com/2022-03-01/events"
+       -H "Content-Type: application/json"
+       -H "Authorization: Bearer $API_KEY"
+     ``` 
+     
+    * * *
+     
+    # Paging
+     
+    All `GET` endpoints to retrieve a list of resources are paged using cursor
+    (keyset, seek) pagination.
+
+
+    To work with Cursor paging all the necessary information will be contained
+    in the response body `pagination` object.
+
+    <table> <thead> <tr> <th>Parameter</th>  <th>Default</th>
+    <th>Description</th> </tr> </thead> <tbody> <tr> <td>order_by</td>
+    <td><code>"created_at"</code></td> <td>The sortable key to use (options
+    varies base on the resource)</td> </tr> <tr> <td>dir</td>
+    <td><code>"desc"</code></td> <td>The direction to sort it
+    (<code>"asc"</code> or <code>"desc"</code>)</td> </tr> <tr> <td>limit</td>
+    <td><code>100</code></td> <td>The making amount of results returned per
+    query (max: <code>250</code>)</td> </tr> <tr> <td>next</td>
+    <td><code>undefined</code></td> <td>The ID / cursor to provide in the query
+    to get the next set of results</td> </tr> <tr> <td>prev</td>
+    <td><code>undefined</code></td> <td>The ID / cursor to provide in the query
+    to get the previous set of results</td> </tr> </tbody> </table>
+     
+    Unless you have specified an `order_by` or `dir`, you can omit it from the
+    next or previous set query. You only have to carry them over if you are not
+    using the resource default.
+
+    > If an event is pending, the keyset will return a truthy value (null) which
+    will cause the pagination to omit null values in the response.
+
+
+    Example pagination object:
+
+    ```
+
+    {
+      "pagination": {
+        "order_by": "created_at",
+        "dir": "desc",
+        "limit": 100,
+        "next": "web_2urj7h9puxk6obro3x",
+        "prev": "web_2urj7h9puxk6obuf6i"
+      }
+    }
+
+    ``` 
+
+
+    Example to get the next page:
+
+    ```
+
+    curl
+    "https://api.hookdeck.com/2022-03-01/connections?next=web_2urj7h9puxk6obro3x"
+      -H "Authorization: Basic BASE64_API_TOKEN"
+    ```
+
+
+    Example to get the previous page:
+
+    ```
+
+    curl
+    "https://api.hookdeck.com/2022-03-01/connections?previous=web_2urj7h9puxk6obuf6i"
+      -H "Authorization: Basic BASE64_API_TOKEN"
+    ```
+
+
+    Example to get the next page without using the default ordering:
+
+    ```
+
+    curl
+    "https://api.hookdeck.com/2022-03-01/connections?order_by=updated_at&dir=asc&next=web_2urj7h9puxk6obro3x"
+      -H "Authorization: Basic BASE64_API_TOKEN"
+    ```
+
+    # Errors
+
+    Hookdeck uses standard HTTP response codes to indicate the success or
+    failure of an API request. In general, codes in the 2xx range indicate
+    success, codes in the 4xx range indicate an error that resulted from the
+    provided information (e.g., a required parameter was missing), and codes in
+    the 5xx range indicate an error.
+
+    ## Response
+
+    With any HTTP error, the response body will contain a few properties.
+
+    <table> <thead> <tr> <th>Parameter</th> <th>Type</th> <th>Description</th>
+    </tr> </thead> <tbody> <tr> <td>handle</td> <td><code>boolean</code></td>
+    <td>Error was handled by the API and did not resolve in an uncaught
+    exception.</td> </tr> <tr> <td>status</td> <td><code>integer</code></td>
+    <td>HTTP Status of the error</td> </tr> <tr> <td>message</td>
+    <td><code>string</code></td> <td>Message associated with the error, could be
+    more or less specific depending on the error</td> </tr> <tr> <td>data</td>
+    <td><code>object</code></td> <td>Data related to the error, useful for
+    diagnostics</td> </tr> </tbody> </table>
+
+
+    ## Error Codes
+
+    <table> <thead> <tr> <th>Status Code</th> <th>Explanation</th> </tr>
+    </thead> <tbody> <tr> <td>200</td> <td>Good Request -- Your request is
+    valid.</td> </tr> <tr> <td>400</td> <td>Bad Request -- Your request is
+    invalid and could not be understood.</td> </tr> <tr> <td>401</td>
+    <td>Unauthorized -- Your API key is wrong.</td> </tr> <tr> <td>403</td>
+    <td>Forbidden -- The resource requested access is restricted.</td> </tr>    
+    <tr> <td>404</td> <td>Not Found -- The resource could not be found.</td>
+    </tr>    <tr> <td>413</td> <td>Payload Too Large -- The payload is larger
+    then the 100Kb limit</td> </tr>         <tr> <td>422</td> <td>Unprocessable
+    Entry -- Your request was understood but contains invalid input.</td> </tr> 
+    <tr> <td>429</td> <td>Too Many Requests -- The request limit for that time
+    period has been reached</td> </tr>        <tr> <td>500</td> <td>Internal
+    Server Error -- We had a problem with our server. Try again later.</td>
+    </tr>            <tr> <td>503</td> <td>Service Unavailable -- We're
+    temporarily offline for maintenance. Please try again later.</td>
+    </tr>                </tbody> </table>
+
+
+    Example response from an error:
+
+    ```
+
+    {
+      "handled": true,
+      "status": 422,
+      "message": "Webhook does not exist or is archived",
+      "data": {
+        "id": "web_xxxxxxxxxxx"
+      }
+    }
+
+    ```
+
+    # Rate Limits
+
+    Hookdeck's Admin API has a rate limit of 240 request per minute per API key.
+    Contact us if you need your rate limit to be increased.
+
+
+    Each request will return the following headers:
+
+    <table> <thead> <tr> <th>Header</th> <th>Explanation</th> </tr> </thead>
+    <tbody> <tr> <td>Retry-After</td> <td>Seconds before next request can be
+    made</td> </tr> <tr> <td>X-RateLimit-Limit</td> <td>Request per minute limit
+    for the API key</td> </tr>         <tr> <td>X-RateLimit-Remaining</td>
+    <td>Remaining request for the rate limit period</td> </tr> <tr>
+    <td>X-RateLimit-Reset</td> <td>ISO timestamp of the next rate limit period
+    reset</td> </tr> </tbody> </table>
+
+
+    # Query Formatting
+
+    ## Arrays
+
+    Arrays are supported for query parameters indicated by `[]` appended to
+    their type. Ex: `string[]`
+
+
+    Arrays should be encoded as `?item[1]=hello&item[2]=world` which will be
+    parse to `["hello", "world"]`
+
+    ## Date
+
+    Dates are expected to be in ISO format ex: `2021-01-21T20:16:28Z` or
+    `2021-01-21`.
+
+    ## JSON
+
+    Some query params take `JSON` as input. The JSON should be stringified and
+    URL encoded into a string.
+
+
+    ex: `?body=%7B%0A%20%20"hello"%3A%20"world"%0A%7D` which will be parsed to
+    `{ "hello": "world" }`
+
+
+    # Operators
+
+    Most query parameters for `GET` endpoints to retrieve a list of resources
+    support query operators. The operators are:
+
+
+    <table> <thead> <tr> <th>Parameter</th> <th>Supported Types</th>
+    <th>Description</th> </tr> </thead> <tbody> <tr> <td>gte</td>
+    <td><code>date</code> <code>number</code></td> <td>Greater or equal
+    than</td> </tr> <tr> <td>gt</td> <td><code>date</code>
+    <code>number</code></td> <td>Greater than</td> </tr> <tr> <td>lte</td>
+    <td><code>date</code> <code>number</code></td> <td>Lesser or equal than</td>
+    </tr> <tr> <td>lt</td> <td><code>date</code> <code>number</code></td>
+    <td>Lesser than</td> </tr> <tr> <td>any</td> <td><code>date</code>
+    <code>number</code> <code>string</code></td> <td>Not <code>null</code></td>
+    </tr> <tr> <td>contains</td> <td><code>string</code></td> <td>Contains</td>
+    </tr> </tbody> </table>
+
+
+    Example pagination object:
+
+
+    ```
+
+    {
+      "pagination": {
+        "order_by": "created_at",
+        "dir": "desc",
+        "limit": 100,
+        "next": "web_2urj7h9puxk6obro3x",
+        "prev": "web_2urj7h9puxk6obuf6i"
+      }
+    }
+
+    ```
+
+    # Changelog
+
+    When backwards-incompatible changes are made to the API, a new, dated
+    version is released. The latest version is, `2022-03-01`.
+
+
+    The API version can be set in the base path of any endpoint such as
+    `https://api.hookdeck.com/2022-03-01/sources`.
+
+
+    If your request doesn't include a version, then the API also defaults to the
+    oldest supported stable version.
+
+
+    The backward incompatible changes are listed bellow for each version.
+    Forward-compatible changes don’t need a new API version and will not appear
+    in this list.
+
+    ## 2022-03-01
+
+      - Removed the `interval` property from the Alert Rule. Alert rule now controls how new issues are opened and notifications are now triggered by an issue opening or re-opening.
+      
+    ### Introducing Issues
+
+      - You can now use the Issues API to retrieve, update, and dismiss problems within your workspace.
+      
+    ### Introducing Notifications by Webhook
+
+     - You can now use the Notifications API to configure webhook notifications for your workspace.
+     
+    * * *
+     
+    ## 2021-08-01
+      - Removed the `label` property for Sources, Destinations, Rulesets and Connections.
+      - Renamed the `alias` property to `name` for Sources, Destinations, Rulesets and Connections.
+      - Removed the `alert_strategy` and `alert_interval` property for Rulesets.
+      - Removed the `retry_strategy`, `retry_interval` and `retry_count` property for Rulesets.
+      - Removed the `filters` property for Connections.
+      - Added the `rules` property to Connections and Rulesets.
+
+    ### Introducing Rules
+
+    The removed properties of Rulesets and Connections have been replaced by the
+    rules array. Each rules has a type and a set of property to configure it's
+    behavior. Rules definitions are found here 
+
+    * * *
+
+    ## 2020-01-01
+
+    `2020-01-01` marks the intial released of the API.
+  termsOfService: https://hookdeck.com/terms
+  contact:
+    name: Hookdeck Support
+    url: https://hookdeck.com/contact-us
+    email: info@hookdeck.com
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+servers:
+  - url: https://api.hookdeck.com/{version}
+    description: Production API
+    variables:
+      version:
+        enum:
+          - '2022-03-01'
+          - '2021-08-01'
+          - '2020-01-01'
+        default: '2022-03-01'
+security:
+  - basicAuth: []
+tags:
+  - name: Webhook Connections
+    description: >-
+      A webhook connection is used to join a source, a destination, and a
+      ruleset.
+
+
+      **Note:** *Connections historically were labeled "webhooks"*.
+
+
+      *The endpoint root path ```/webhooks``` has been moved to
+      ```/connections```*.
+
+
+      *The former will remain functional but consider migrating to
+      ```/connections```.*
+  - name: Sources
+    description: >-
+      The Source object represents the third party sending the webhooks.
+
+
+      Each source will provide you with a unique Hookdeck `URL` where the
+      webhooks can be set to be ingested by Hookdeck.
+
+
+      Each valid HTTP request received at that URL creates an `Event`.
+paths:
+  /connections:
+    $ref: paths/connections.yaml
+  /connections/{id}:
+    $ref: paths/connections_{id}.yaml
+  /connections/{id}/pause:
+    $ref: paths/connections_{id}_pause.yaml
+  /connections/{id}/unpause:
+    $ref: paths/connections_{id}_unpause.yaml
+  /connections/{id}/archive:
+    $ref: paths/connections_{id}_archive.yaml
+  /connections/{id}/unarchive:
+    $ref: paths/connections_{id}_unarchive.yaml
+    
+  /sources:
+    $ref: paths/sources.yaml
+  /sources/{id}:
+    $ref: paths/sources_{id}.yaml
+  /sources/{id}/archive:
+    $ref: paths/sources_{id}_archive.yaml
+  /sources/{id}/unarchive:
+    $ref: paths/sources_{id}_unarchive.yaml
+
+  /destinations:
+    $ref: paths/destinations.yaml
+  /destinations/{id}:
+    $ref: paths/destinations_{id}.yaml
+  /destinations/{id}/archive:
+    $ref: paths/destinations_{id}_archive.yaml
+  /destinations/{id}/unarchive:
+    $ref: paths/destinations_{id}_unarchive.yaml
+
+  /rulesets:
+    $ref: paths/rulesets.yaml
+  /rulesets/{id}:
+    $ref: paths/rulesets_{id}.yaml
+  /rulesets/{id}/archive:
+    $ref: paths/rulesets_{id}_archive.yaml
+  /rulesets/{id}/unarchive:
+    $ref: paths/rulesets_{id}_unarchive.yaml
+
+  /events:
+    $ref: paths/events.yaml
+  /events/{id}:
+    $ref: paths\events_{id}.yaml
+  /events/{id}/retry:
+    $ref: paths\events_{id}_retry.yaml
+  /events/{id}/mute:
+    $ref: paths\events_{id}_mute.yaml
+
+  /attempts:
+    $ref: paths/attempts.yaml
+  /attempts/{id}:
+    $ref: paths/attempts_{id}.yaml
+
+    

@@ -1,0 +1,108 @@
+type: object
+description: A webhook connection is used to join a source, a destination, and a ruleset.
+properties:
+  id:
+    type: string
+    description: ID of the connection
+  name:
+    type: string
+    description: Unique name of the connection for this source
+  team_id:
+    type: string
+    description: ID of the workspace
+  source:
+    $ref: .\Source.yaml
+    description: Associated Source object
+  destination:
+    $ref: .\Destination.yaml
+    description: Associated Destination object
+  ruleset:
+    $ref: .\Ruleset.yaml
+    description: Associated Ruleset object
+  archived_at:
+    type: string
+    format: date
+    description: Date the webhook connection was archived
+    readOnly: true
+    nullable: true
+    default: null
+  updated_at:
+    type: string
+    format: date
+    description: Date the webhook connection was last updated
+    readOnly: true
+  created_at:
+    type: string
+    format: date
+    description: Date the webhook connection was created
+    readOnly: true
+  paused_at:
+    type: string
+    format: date
+    description: Date the webhook connection was paused
+    readOnly: true
+  resolved_rules:
+    type: array
+    items:
+      $ref: .\Rule.yaml
+    description: Array of rules applied to connection after factoring for the ruleset
+    readOnly: true
+  rules:
+    type: array
+    items:
+      $ref: .\Rule.yaml
+    default: []
+    description: Array of rules configured on the connection
+example:
+  id: web_mNP60lEYInVfnH1EUWbhfUYL
+  team_id: tm_nlcetVe8k1lMAY0KR0OxNuHr
+  archived_at: null
+  updated_at: '2021-08-02T00:26:46.620Z'
+  created_at: '2021-08-02T00:26:47.070Z'
+  paused_at: null
+  name: shopify-my-api
+  rules: []
+  destination:
+    id: des_6MO6QjY7pOotcDaFZfw2hoWF
+    team_id: tm_nlcetVe8k1lMAY0KR0OxNuHr
+    url: https://example.com/webhook
+    archived_at: null
+    updated_at: '2021-08-02T00:26:46.827Z'
+    created_at: '2021-08-02T00:25:31.858Z'
+    rate_limit: 5
+    rate_limit_period: second
+    cli_path: null
+    path_forwarding_disabled: false
+    name: my-api
+  source:
+    id: src_9YmY0SHklrv6zBQz78cKGwSW
+    team_id: tm_nlcetVe8k1lMAY0KR0OxNuHr
+    archived_at: null
+    updated_at: '2021-08-02T00:26:46.816Z'
+    created_at: '2021-08-01T21:29:41.788Z'
+    name: shopify
+    url: https://events.hookdeck.com/e/src_9YmY0SHklrv6zBQz78cKGwSW
+  ruleset:
+    id: rls_gaqoPgyT17a8x1mBMpKnku8A
+    team_id: tm_nlcetVe8k1lMAY0KR0OxNuHr
+    is_team_default: true
+    archived_at: null
+    updated_at: '2021-08-02T00:26:46.649Z'
+    created_at: '2021-08-01T21:29:36.367Z'
+    name: default-ruleset
+    rules:
+      - type: retry
+        count: 5
+        interval: 10800000
+        strategy: linear
+      - type: alert
+        interval: 86400000
+        strategy: last_attempt
+  resolved_rules:
+    - type: retry
+      count: 5
+      interval: 10800000
+      strategy: linear
+    - type: alert
+      interval: 86400000
+      strategy: last_attempt

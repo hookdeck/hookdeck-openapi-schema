@@ -1,0 +1,21 @@
+summary: List of destinations
+value:
+  pagination:
+    order_by: created_at
+    dir: desc
+    limit: 1
+    next: des_Nm49lhZV6wVrN1XFFPfkv7Zk
+  count: 1
+  models:
+  - id: des_Nm49lhZV6wVrN1XFFPfkv7Zk
+    team_id: tm_nlcetVe8k1lMAY0KR0OxNuHr
+    url: https://example.com/webhook
+    archived_at:
+    updated_at: '2021-08-02T14:12:56.671Z'
+    created_at: '2021-08-02T14:12:56.589Z'
+    rate_limit:
+    rate_limit_period: second
+    cli_path:
+    path_forwarding_disabled: false
+    name: my-api
+  

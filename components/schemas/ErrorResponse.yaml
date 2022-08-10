@@ -1,0 +1,27 @@
+type: object
+description: Error model
+properties:
+  id:
+    type: string
+    description: Request ID
+    readOnly: true
+  handled:
+    type: boolean
+    description: Error was handled by the API and did not resolve in an uncaught exception
+    readOnly: true
+  status:
+    type: number
+    format: int32
+    description: HTTP status of the error
+    readOnly: true
+  message:
+    type: string
+    description: >-
+      Message associated with the error, could be more or less specific
+      depending on the error
+    readOnly: true
+  data:
+    type: object
+    properties: {}
+    description: Data related to the error, useful for diagnostics
+    readOnly: true

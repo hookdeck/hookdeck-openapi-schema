@@ -1,0 +1,113 @@
+type: object
+description: >-
+  An event is any request that Hookdeck receives from a source.
+properties:
+  id:
+    type: string
+    description: ID of the event
+    readOnly: true
+  team_id:
+    type: string
+    description: ID of the workspace
+    readOnly: true
+  webhook_id:
+    type: string
+    description: ID of the associated connection  
+    readOnly: true
+  source_id:
+    type: string
+    description: ID of the associated source
+    readOnly: true
+  destination_id:
+    type: string
+    description: ID of the associated destination  
+    readOnly: true
+  cli_id:
+    type: string
+    description: ID of the CLI the event is sent to 
+    readOnly: true
+    nullable: true
+    default: null
+  request_id:
+    type: string
+    description: ID of the request that created the event 
+    readOnly: true
+  event_data_id:
+    type: string
+    description: ID of the request data
+    readOnly: true
+  attempts:
+    type: number
+    description: Number of delivery attempts made
+    readOnly: true
+    default: 0
+  status:
+    type: string
+    description: Event status
+    enum:
+      - QUEUED
+      - HOLD
+      - SUCCESSFUL
+      - FAILED
+    readOnly: true
+    nullable: true
+    default: null
+  response_status:
+    type: number
+    description: HTTP error code
+    readOnly: true
+    nullable: true
+    default: null
+  error_code:
+    type: string
+    readOnly: true
+    nullable: true
+    default: null
+  last_attempt_at:
+    type: string
+    format: date
+    description: Date of the most recently attempted retry
+    readOnly: true
+    nullable: true
+    default: null        
+  next_attempt_at:
+    type: string
+    format: date
+    description: Date of the next scheduled retry
+    readOnly: true
+    nullable: true
+    default: null        
+  successful_at:
+    type: string
+    format: date
+    description: Date of the latest successful attempt
+    readOnly: true
+    nullable: true
+    default: null
+  updated_at:
+    type: string
+    format: date
+    description: Date the event  was last updated
+    readOnly: true
+  created_at:
+    type: string
+    format: date
+    description: Date the event  was created
+    readOnly: true
+example:
+  id: evt_5b3mzbxk83deakr
+  team_id: tm_5b3mzbxk83c0k7i
+  webhook_id: web_5b3mzbxk83dcij0
+  source_id: src_5b3mzbxk83dciin
+  destination_id: des_5b3mzbxk83dciim
+  cli_id:
+  event_data_id: evtreq_Ixux8vb2VBnZIuieVFPcUF9d
+  attempts: 0
+  status: QUEUED
+  response_status:
+  last_attempt_at:
+  next_attempt_at:
+  successful_at:
+  updated_at: '2020-03-22T18:24:01.031Z'
+  created_at: '2020-03-22T18:24:01.035Z'
+  

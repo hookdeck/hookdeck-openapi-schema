@@ -1,0 +1,7 @@
+description: Request body for webhook connection update with existing resources
+allOf:
+  - $ref: .\UpdateWebhookConnectionRequest.yaml
+  - type: object
+    properties:
+      ruleset:
+        $ref: .\Ruleset.yaml

@@ -1,0 +1,14 @@
+summary: A single ruleset
+value:
+  id: rls_YreVNPlduZdaCIF1cDf2a11u
+  team_id: tm_nlcetVe8k1lMAY0KR0OxNuHr
+  is_team_default: false
+  archived_at:
+  updated_at: '2021-08-02T14:12:57.156Z'
+  created_at: '2021-08-02T14:12:57.131Z'
+  name: fast-retry-ruleset
+  rules:
+  - type: retry
+    count: 10
+    interval: 60000
+    strategy: linear

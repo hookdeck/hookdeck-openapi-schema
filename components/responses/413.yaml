@@ -1,0 +1,20 @@
+description: Payload Too Large -- The payload is larger then the 100Kb limit
+content:
+  application/json:
+    schema:
+      $ref: ..\schemas\ErrorResponse.yaml
+    example:
+      handled: true
+      status: 413
+      message: Payload Too Large
+      data:
+        id: web_xxxxxxxxxxx
+headers:
+  Retry-After:
+    $ref: ..\headers\Retry-After.yaml
+  X-RateLimit-Limit:
+    $ref: ..\headers\X-RateLimit-Limit.yaml
+  X-RateLimit-Limit-Remaining:
+    $ref: ..\headers\X-RateLimit-Remaining.yaml
+  X-RateLimit-Limit-Reset:
+    $ref: ..\headers\X-RateLimit-Reset.yaml

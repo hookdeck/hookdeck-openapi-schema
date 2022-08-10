@@ -1,0 +1,4 @@
+description: Remaining request for the rate limit period
+schema:
+  type: number
+  format: int32

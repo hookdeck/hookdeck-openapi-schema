@@ -1,0 +1,31 @@
+type: object
+description: A filter rule will configure a filter on incoming events.
+properties:
+  type:
+    type: string
+    enum:
+      - filter
+    default: filter
+    description: A filter  rule must be of type ```filter```
+  body:
+    type: object
+    properties: {}
+    description: JSON using our filter syntaxt to filter on request body
+  headers:
+    type: object
+    properties: {}
+    description: JSON using our filter syntaxt to filter on request headers
+  path:
+    type: object
+    properties: {}
+    description: JSON using our filter syntaxt to filter on request path
+  query:
+    type: object
+    properties: {}
+    description: JSON using our filter syntaxt to filter on request parsed query params
+required:
+  - type
+example:
+  type: filter
+  body:
+    example: true

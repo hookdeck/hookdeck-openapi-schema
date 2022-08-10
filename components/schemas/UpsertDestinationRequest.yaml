@@ -1,0 +1,21 @@
+type: object
+description: Request body for destination update
+properties:
+  name:
+    type: string
+    description: Unique name for the destination
+  url:
+    type: string
+    description: Endpoint of the destination
+  cli_path:
+    type: string
+    description: Path for the CLI destination
+  rate_limit:
+    type: number
+    description: 	Limit event attempts to receive per period. Max 100/second or 6000/minute.
+  rate_limit_period:
+    type: string
+    enum:
+      - second
+      - minute
+    description: Period to rate limit attempts. (```second``` or ```minute```)
