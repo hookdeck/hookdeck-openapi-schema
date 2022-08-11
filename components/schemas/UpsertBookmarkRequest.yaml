@@ -1,0 +1,22 @@
+type: object
+description: Request body for bookmark upsert
+properties:
+  label:
+    type: string
+    description: Descriptive name of the bookmark
+  alias:
+    type: string
+    description: Alternate alias for the bookmark
+    nullable: true
+    default: null
+  webhook_id:
+    type: string
+    description: ID of the associated connection
+  event_data_id:
+    type: string
+    description: ID of the bookmarked event data
+
+example:
+  label: Product Update - Out of Stock
+  event_data_id: evtreq_HlJhb39nsjIP0FDsU3SY0fo7
+  webhook_id: web_UfM5ZY2wxLD6sLhDaKMcx5wp

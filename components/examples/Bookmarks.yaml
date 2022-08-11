@@ -1,0 +1,30 @@
+summary: List of bookmarks
+value:
+  pagination:
+    order_by: created_at
+    dir: desc
+    limit: 1
+  count: 1
+  models:
+    - id: bmk_4RbrZcXNALN6WKUljj92hY08
+      team_id: tm_nlcetVe8k1lMAY0KR0OxNuHr
+      webhook_id: web_UfM5ZY2wxLD6sLhDaKMcx5wp
+      label: Shopify order
+      alias:
+      event_data_id: evtreq_HlJhb39nsjIP0FDsU3SY0fo7
+      last_used_at:
+      updated_at: '2021-08-02T13:43:23.518Z'
+      created_at: '2021-08-02T13:43:23.516Z'
+      data:
+        headers:
+          content-length: '20'
+          x-original-url: '/e/src_9YmY0SHklrv6zBQz78cKGwSW'
+          cookie: ''
+          x-client-version: FirebaseCLI/undefined
+          content-type: application/json
+          user-agent: FirebaseCLI/undefined
+        body:
+          test: true
+        query: ''
+        parsed_query: {}
+        path: '/'
