@@ -6,7 +6,9 @@
   "scripts": {
     "lint": "prettier -c .",
     "format": "prettier -w .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "redocly bundle -d --output dist openapi.yaml",
+    "preview": "redocly preview-docs openapi.yaml"
   },
   "repository": {
     "type": "git",
