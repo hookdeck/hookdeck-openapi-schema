@@ -8,6 +8,6 @@ value:
   created_at: '2021-08-02T14:09:56.116Z'
   rate_limit:
   rate_limit_period: second
-  cli_path: "/"
+  cli_path: '/'
   path_forwarding_disabled: false
   name: my-api

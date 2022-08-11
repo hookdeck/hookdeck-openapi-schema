@@ -18,7 +18,7 @@ value:
   data:
     headers:
       content-length: '20'
-      x-original-url: "/e/src_9YmY0SHklrv6zBQz78cKGwSW"
+      x-original-url: '/e/src_9YmY0SHklrv6zBQz78cKGwSW'
       cookie: ''
       x-client-version: FirebaseCLI/undefined
       content-type: application/json
@@ -27,5 +27,4 @@ value:
       test: true
     query: ''
     parsed_query: {}
-    path: "/"
-  
+    path: '/'

@@ -4,6 +4,8 @@
   "description": "Hookdeck OpenAPI Schema",
   "main": "index.js",
   "scripts": {
+    "lint": "prettier -c .",
+    "format": "prettier -w .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
