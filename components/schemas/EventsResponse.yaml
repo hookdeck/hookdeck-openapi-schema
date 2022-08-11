@@ -1,10 +1,10 @@
 description: Paginated response of events
 allOf:
-  - $ref: .\PaginatedResponse.yaml
+  - $ref: ./PaginatedResponse.yaml
   - type: object
     properties:
       models:
         type: array
         items:
-          $ref: .\Event.yaml
+          $ref: ./Event.yaml
         readOnly: true

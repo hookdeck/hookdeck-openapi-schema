@@ -8,6 +8,6 @@ properties:
   rules:
     type: array
     items:
-      $ref: .\Rule.yaml
+      $ref: ./Rule.yaml
     default: []
     description: Array of rules to apply

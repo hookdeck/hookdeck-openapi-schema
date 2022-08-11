@@ -11,13 +11,13 @@ properties:
     type: string
     description: ID of the workspace
   source:
-    $ref: .\Source.yaml
+    $ref: ./Source.yaml
     description: Associated Source object
   destination:
-    $ref: .\Destination.yaml
+    $ref: ./Destination.yaml
     description: Associated Destination object
   ruleset:
-    $ref: .\Ruleset.yaml
+    $ref: ./Ruleset.yaml
     description: Associated Ruleset object
   archived_at:
     type: string
@@ -44,13 +44,13 @@ properties:
   resolved_rules:
     type: array
     items:
-      $ref: .\Rule.yaml
+      $ref: ./Rule.yaml
     description: Array of rules applied to connection after factoring for the ruleset
     readOnly: true
   rules:
     type: array
     items:
-      $ref: .\Rule.yaml
+      $ref: ./Rule.yaml
     default: []
     description: Array of rules configured on the connection
 example:

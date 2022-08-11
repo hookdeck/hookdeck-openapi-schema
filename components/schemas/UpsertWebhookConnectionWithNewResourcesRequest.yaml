@@ -1,11 +1,11 @@
 description: Request body for webhook connection upsert with existing resources
 allOf:
-  - $ref: .\UpsertWebhookConnectionRequest.yaml
+  - $ref: ./UpsertWebhookConnectionRequest.yaml
   - type: object
     properties:
       source:
-        $ref: .\Source.yaml
+        $ref: ./Source.yaml
       destination:
-        $ref: .\Destination.yaml
+        $ref: ./Destination.yaml
       ruleset:
-        $ref: .\Ruleset.yaml
+        $ref: ./Ruleset.yaml

@@ -1,6 +1,6 @@
 description: Request body for webhook connection upsert with existing resources
 allOf:
-  - $ref: .\UpsertWebhookConnectionRequest.yaml
+  - $ref: ./UpsertWebhookConnectionRequest.yaml
   - type: object
     properties:
       source_id:
