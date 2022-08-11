@@ -1,0 +1,53 @@
+put:
+  operationId: unarchiveSource
+  summary: Unarchive a source
+  description: >-
+    Unarchive a source.
+
+    The parameter ```archived_at``` is set to null
+  tags:
+    - Sources
+  parameters:
+    - name: id
+      in: path
+      description: Source ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\Source.yaml
+          examples:
+            Source:
+              $ref: ..\components\examples\Source.yaml
+      headers:
+        Retry-After:
+          $ref: ..\components\headers\Retry-After.yaml
+        X-RateLimit-Limit:
+          $ref: ..\components\headers\X-RateLimit-Limit.yaml
+        X-RateLimit-Limit-Remaining:
+          $ref: ..\components\headers\X-RateLimit-Remaining.yaml
+        X-RateLimit-Limit-Reset:
+          $ref: ..\components\headers\X-RateLimit-Reset.yaml
+    '400':
+      $ref: ..\components\responses\400.yaml
+    '401':
+      $ref: ..\components\responses\401.yaml
+    '403':
+      $ref: ..\components\responses\403.yaml
+    '404':
+      $ref: ..\components\responses\404.yaml
+    '413':
+      $ref: ..\components\responses\413.yaml
+    '422':
+      $ref: ..\components\responses\422.yaml
+    '429':
+      $ref: ..\components\responses\429.yaml
+    '500':
+      $ref: ..\components\responses\500.yaml
+    '503':
+      $ref: ..\components\responses\503.yaml

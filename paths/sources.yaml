@@ -1,0 +1,178 @@
+get:
+  operationId: getAllSources
+  summary: Retrieve all sources
+  tags:
+    - Sources
+  parameters:
+    - name: id
+      in: query
+      description: Filter by source ids
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    - name: name
+      in: query
+      description: The source name
+      required: false
+      schema:
+        type: string
+    - name: archived
+      in: query
+      description: Include the archived resources in response
+      required: false
+      schema:
+        type: boolean
+    - name: archived_at
+      in: query
+      description: Date the source was archived
+      required: false
+      schema:
+        type: string
+        format: date
+    - name: limit
+      in: query
+      description: Limit the returned event count. Max 250.
+      required: false
+      schema:
+        type: number
+        format: int32
+        maximum: 250
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\SourcesResponse.yaml
+          examples:
+            Sources:
+              $ref: ..\components\examples\Sources.yaml
+      headers:
+        Retry-After:
+          $ref: ..\components\headers\Retry-After.yaml
+        X-RateLimit-Limit:
+          $ref: ..\components\headers\X-RateLimit-Limit.yaml
+        X-RateLimit-Limit-Remaining:
+          $ref: ..\components\headers\X-RateLimit-Remaining.yaml
+        X-RateLimit-Limit-Reset:
+          $ref: ..\components\headers\X-RateLimit-Reset.yaml
+    '400':
+      $ref: ..\components\responses\400.yaml
+    '401':
+      $ref: ..\components\responses\401.yaml
+    '403':
+      $ref: ..\components\responses\403.yaml
+    '404':
+      $ref: ..\components\responses\404.yaml
+    '413':
+      $ref: ..\components\responses\413.yaml
+    '422':
+      $ref: ..\components\responses\422.yaml
+    '429':
+      $ref: ..\components\responses\429.yaml
+    '500':
+      $ref: ..\components\responses\500.yaml
+    '503':
+      $ref: ..\components\responses\503.yaml
+post:
+  operationId: createSource
+  summary: Create a source
+  description: This endpoint creates a source
+  tags:
+    - Sources
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\UpsertSourceRequest.yaml
+        example:
+          name: shopify
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\Source.yaml
+          examples:
+            Source:
+              $ref: ..\components\examples\Source.yaml
+      headers:
+        Retry-After:
+          $ref: ..\components\headers\Retry-After.yaml
+        X-RateLimit-Limit:
+          $ref: ..\components\headers\X-RateLimit-Limit.yaml
+        X-RateLimit-Limit-Remaining:
+          $ref: ..\components\headers\X-RateLimit-Remaining.yaml
+        X-RateLimit-Limit-Reset:
+          $ref: ..\components\headers\X-RateLimit-Reset.yaml
+    '400':
+      $ref: ..\components\responses\400.yaml
+    '401':
+      $ref: ..\components\responses\401.yaml
+    '403':
+      $ref: ..\components\responses\403.yaml
+    '404':
+      $ref: ..\components\responses\404.yaml
+    '413':
+      $ref: ..\components\responses\413.yaml
+    '422':
+      $ref: ..\components\responses\422.yaml
+    '429':
+      $ref: ..\components\responses\429.yaml
+    '500':
+      $ref: ..\components\responses\500.yaml
+    '503':
+      $ref: ..\components\responses\503.yaml
+put:
+  operationId: upsertSource
+  summary: Update or create (upsert) a source
+  description: This endpoint creates a source, or updates an existing source by name
+  tags:
+    - Sources
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\UpsertSourceRequest.yaml
+        example:
+          name: shopify
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\Source.yaml
+          examples:
+            Source:
+              $ref: ..\components\examples\Source.yaml
+      headers:
+        Retry-After:
+          $ref: ..\components\headers\Retry-After.yaml
+        X-RateLimit-Limit:
+          $ref: ..\components\headers\X-RateLimit-Limit.yaml
+        X-RateLimit-Limit-Remaining:
+          $ref: ..\components\headers\X-RateLimit-Remaining.yaml
+        X-RateLimit-Limit-Reset:
+          $ref: ..\components\headers\X-RateLimit-Reset.yaml
+    '400':
+      $ref: ..\components\responses\400.yaml
+    '401':
+      $ref: ..\components\responses\401.yaml
+    '403':
+      $ref: ..\components\responses\403.yaml
+    '404':
+      $ref: ..\components\responses\404.yaml
+    '413':
+      $ref: ..\components\responses\413.yaml
+    '422':
+      $ref: ..\components\responses\422.yaml
+    '429':
+      $ref: ..\components\responses\429.yaml
+    '500':
+      $ref: ..\components\responses\500.yaml
+    '503':
+      $ref: ..\components\responses\503.yaml

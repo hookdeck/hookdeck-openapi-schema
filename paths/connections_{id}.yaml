@@ -1,0 +1,126 @@
+get:
+  operationId: getWebhookConnection
+  summary: Retrieve a webhook connection
+  tags:
+    - Webhook Connections
+  parameters:
+    - name: id
+      in: path
+      description: Webhook connection ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\WebhookConnection.yaml
+          examples:
+            WebhookConnection:
+              $ref: ..\components\examples\WebhookConnection.yaml
+      headers:
+        Retry-After:
+          $ref: ..\components\headers\Retry-After.yaml
+        X-RateLimit-Limit:
+          $ref: ..\components\headers\X-RateLimit-Limit.yaml
+        X-RateLimit-Limit-Remaining:
+          $ref: ..\components\headers\X-RateLimit-Remaining.yaml
+        X-RateLimit-Limit-Reset:
+          $ref: ..\components\headers\X-RateLimit-Reset.yaml
+    '400':
+      $ref: ..\components\responses\400.yaml
+    '401':
+      $ref: ..\components\responses\401.yaml
+    '403':
+      $ref: ..\components\responses\403.yaml
+    '404':
+      $ref: ..\components\responses\404.yaml
+    '413':
+      $ref: ..\components\responses\413.yaml
+    '422':
+      $ref: ..\components\responses\422.yaml
+    '429':
+      $ref: ..\components\responses\429.yaml
+    '500':
+      $ref: ..\components\responses\500.yaml
+    '503':
+      $ref: ..\components\responses\503.yaml
+put:
+  operationId: updateWebhookConnection
+  summary: Update a webhook connection
+  description: This endpoint updates a webhook connection.
+  tags:
+    - Webhook Connections
+  parameters:
+    - name: id
+      in: path
+      description: Webhook connection ID
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          oneOf:
+            - $ref: >-
+                ..\components\schemas\UpdateWebhookConnectionWithNewResourcesRequest.yaml
+            - $ref: >-
+                ..\components\schemas\UpdateWebhookConnectionWithExistingResourcesRequest.yaml
+        examples:
+          NewResources:
+            summary: Update a webhook connection with new resources
+            value:
+              rules:
+                name: fast-retry-ruleset
+                rules:
+                  - type: retry
+                    strategy: linear
+                    count: 10
+                    interval: 60000
+                  - type: alert
+                    interval: 3600000
+                    strategy: last_attempt
+          ExistingResources:
+            summary: Update a webhook connection with existing resources
+            value:
+              ruleset_id: rls_YZCDPNVHORE8BZ86aDRyRMtZ
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\WebhookConnection.yaml
+          examples:
+            WebhookConnection:
+              $ref: ..\components\examples\WebhookConnection.yaml
+      headers:
+        Retry-After:
+          $ref: ..\components\headers\Retry-After.yaml
+        X-RateLimit-Limit:
+          $ref: ..\components\headers\X-RateLimit-Limit.yaml
+        X-RateLimit-Limit-Remaining:
+          $ref: ..\components\headers\X-RateLimit-Remaining.yaml
+        X-RateLimit-Limit-Reset:
+          $ref: ..\components\headers\X-RateLimit-Reset.yaml
+    '400':
+      $ref: ..\components\responses\400.yaml
+    '401':
+      $ref: ..\components\responses\401.yaml
+    '403':
+      $ref: ..\components\responses\403.yaml
+    '404':
+      $ref: ..\components\responses\404.yaml
+    '413':
+      $ref: ..\components\responses\413.yaml
+    '422':
+      $ref: ..\components\responses\422.yaml
+    '429':
+      $ref: ..\components\responses\429.yaml
+    '500':
+      $ref: ..\components\responses\500.yaml
+    '503':
+      $ref: ..\components\responses\503.yaml
