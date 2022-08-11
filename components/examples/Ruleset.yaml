@@ -3,13 +3,13 @@ value:
   id: rls_YreVNPlduZdaCIF1cDf2a11u
   name: fast-retry-ruleset
   rules:
-  - type: retry
-    count: 10
-    interval: 60000
-    strategy: linear
-  - type: alert
-    interval: 3600000
-    strategy: last_attempt
+    - type: retry
+      count: 10
+      interval: 60000
+      strategy: linear
+    - type: alert
+      interval: 3600000
+      strategy: last_attempt
   team_id: tm_nlcetVe8k1lMAY0KR0OxNuHr
   created_at: '2021-08-02T14:12:57.131Z'
   is_team_default: false

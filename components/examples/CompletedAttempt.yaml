@@ -21,7 +21,7 @@ value:
     message: The Mock API returns the request data with a randomized status code
     next_step: Convinced? Update your destination with your own server HTTP URL.
     mock_status: 202
-    requested_path: "/"
+    requested_path: '/'
     received_data:
       headers:
         host: mock.hookdeck.com
@@ -29,7 +29,7 @@ value:
         accept: application/json, text/plain, */*
         content-type: application/json
         idempotency-key: evt_njCeMZHzNhJWdkkZ7PLCfEw5
-        x-original-url: "/e/src_9YmY0SHklrv6zBQz78cKGwSW"
+        x-original-url: '/e/src_9YmY0SHklrv6zBQz78cKGwSW'
         cookie: ''
         x-client-version: FirebaseCLI/undefined
         user-agent: FirebaseCLI/undefined

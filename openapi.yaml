@@ -379,7 +379,7 @@ paths:
     $ref: paths/connections_{id}_archive.yaml
   /connections/{id}/unarchive:
     $ref: paths/connections_{id}_unarchive.yaml
-    
+
   /sources:
     $ref: paths/sources.yaml
   /sources/{id}:
@@ -420,5 +420,3 @@ paths:
     $ref: paths/attempts.yaml
   /attempts/{id}:
     $ref: paths/attempts_{id}.yaml
-
-    
