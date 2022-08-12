@@ -420,3 +420,22 @@ paths:
     $ref: paths/attempts.yaml
   /attempts/{id}:
     $ref: paths/attempts_{id}.yaml
+
+  /bulk/events/retry:
+    $ref: paths/bulk_events_retry.yaml
+  /bulk/events/retry/plan:
+    $ref: paths/bulk_events_retry_plan.yaml
+  /bulk/events/retry/{id}:
+    $ref: paths/bulk_events_retry_{id}.yaml
+  /bulk/events/retry/{id}/cancel:
+    $ref: paths/bulk_events_retry_{id}_cancel.yaml
+
+  /bookmarks:
+    $ref: paths/bookmarks.yaml
+  /bookmarks/{id}:
+    $ref: paths/bookmarks_{id}.yaml
+  /bookmarks/{id}/trigger:
+    $ref: paths/bookmarks_{id}_trigger.yaml
+
+  /notifications/webhooks:
+    $ref: paths/notifications.yaml

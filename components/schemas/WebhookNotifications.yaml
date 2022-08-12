@@ -1,0 +1,25 @@
+type: object
+description: >-
+  Webhook notifications settings for the workspace.
+properties:
+  source_id:
+    type: string
+    description: ID of the Hookdeck Source to send the webhook to
+  enabled:
+    type: boolean
+    description: Enable or disable webhook notifications on the workspace
+  topics:
+    type: array
+    items:
+      type: string
+      enum:
+        - issue.opened
+        - issue.updated
+    default: []
+    description: List of topics to send notifications for
+
+example:
+  enabled: true
+  source_id: src_9YmY0SHklrv6zBQz78cKGwSW
+  topics:
+    - issues.opened

@@ -1,0 +1,107 @@
+type: object
+description: >-
+  A bulk retry re-attempts delivery for one or more events, based on a filter.
+
+
+  > Events on paused connections will still be retried unless excluded from the query.
+properties:
+  id:
+    type: string
+    description: ID of the bulk retry
+    readOnly: true
+  team_id:
+    type: string
+    description: ID of the workspace
+    readOnly: true
+  query:
+    type: object
+    description: Query object to filter events, use query parameters of Event
+    readOnly: true
+  updated_at:
+    type: string
+    format: date
+    description: Last time the bulk retry was updated
+    readOnly: true
+  created_at:
+    type: string
+    format: date
+    description: Date the bulk retry was created
+    readOnly: true
+  completed_at:
+    type: string
+    format: date
+    description: Date the bulk retry was completed
+    readOnly: true
+    nullable: true
+    default: null
+  cancelled_at:
+    type: string
+    format: date
+    description: Date the bulk retry was cancelled
+    readOnly: true
+    nullable: true
+    default: null
+  estimated_batch_count:
+    type: number
+    description: Number of batches required to complete the bulk retry
+    readOnly: true
+  processed_batch_count:
+    type: number
+    description: Number of batches currently processed
+    readOnly: true
+  estimated_event_count:
+    type: number
+    description: Number of estimated events to be retried
+    readOnly: true
+  delivered_event_count:
+    type: number
+    description: Number of events that were successfully delivered
+    readOnly: true
+  failed_event_count:
+    type: number
+    description: Number of events that failed to be delivered
+    readOnly: true
+  completed_event_id:
+    type: string
+    description: Id of the last event to be processed in the bulk retry
+    readOnly: true
+  last_processed_event_id:
+    type: string
+    description: Id of the last event processed during the last batch operation
+    readOnly: true
+  progress:
+    type: number
+    description: Progression of the batch operations, values 0 - 1
+    minimum: 0
+    maximum: 1
+    readOnly: true
+  in_progress:
+    type: boolean
+    description: Indicates if the bulk retry is currently in progress
+    readOnly: true
+
+example:
+  id: blkr_SbhWYp1gdsbkno
+  team_id: tm_PCQ7f4DjfLLh
+  query:
+    dir: desc
+    limit: 250
+    status:
+      - SUCCESSFUL
+    order_by: created_at
+    created_at:
+      gte: '2022-05-02T02:30:00.000Z'
+      lte: '2022-05-03T02:29:59.999Z'
+  updated_at: '2022-05-02T15:24:51.871Z'
+  created_at: '2022-05-02T15:24:51.871Z'
+  completed_at: '2022-05-02T15:27:51.871Z'
+  cancelled_at:
+  estimated_batch_count: 5
+  processed_batch_count: 5
+  estimated_event_count: 1240
+  delivered_event_count: 1240
+  failed_event_count: 0
+  completed_event_id: evt_hwvLtPf2qgCcp3Kp7O
+  last_processed_event_id:
+  progress: 1
+  in_progress: false

@@ -1,0 +1,148 @@
+get:
+  operationId: getAllBulkEventsRetries
+  summary: Retrieve all bulk retries
+  description: >-
+    This endpoint lists all bulk retries, or a subset of bulk retries.
+
+
+    Filter events using parameters of Events.
+
+
+    For example: ```?query[status][0]=FAILED``` will include only events that failed, whereas ```?query[status][0]=FAILED&query[status][0]=SUCCESSFUL``` will include events that both failed and succeeded.
+  tags:
+    - Bulk retries
+  parameters:
+    - name: id
+      in: query
+      description: Filter by bulk retry IDs
+      required: false
+      schema:
+        type: string
+    - name: query
+      in: query
+      description: Filter for events to be included in the bulk retry, use query parameters of Event
+      required: false
+      schema:
+        type: string
+    - name: query_partial_match
+      in: query
+      description: Allow partial filter match on query property
+      required: false
+      schema:
+        type: boolean
+    - name: cancelled_at
+      in: query
+      description: Filter by date the bulk retry was cancelled
+      required: false
+      schema:
+        type: string
+        format: date
+    - name: completed_at
+      in: query
+      description: Filter by date the bulk retry completed
+      required: false
+      schema:
+        type: string
+        format: date
+    - name: created_at
+      in: query
+      description: Filter by date the bulk retry was created
+      required: false
+      schema:
+        type: string
+        format: date
+    - name: in_progress
+      in: query
+      description: Indicates if the bulk retry is currently in progress
+      required: false
+      schema:
+        type: boolean
+    - name: limit
+      in: query
+      description: Limit the returned event count (max 250)
+      required: false
+      schema:
+        type: number
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BulkEventsRetries.yaml
+      headers:
+        Retry-After:
+          $ref: ../components/headers/Retry-After.yaml
+        X-RateLimit-Limit:
+          $ref: ../components/headers/X-RateLimit-Limit.yaml
+        X-RateLimit-Limit-Remaining:
+          $ref: ../components/headers/X-RateLimit-Remaining.yaml
+        X-RateLimit-Limit-Reset:
+          $ref: ../components/headers/X-RateLimit-Reset.yaml
+    '400':
+      $ref: ../components/responses/400.yaml
+    '401':
+      $ref: ../components/responses/401.yaml
+    '403':
+      $ref: ../components/responses/403.yaml
+    '404':
+      $ref: ../components/responses/404.yaml
+    '413':
+      $ref: ../components/responses/413.yaml
+    '422':
+      $ref: ../components/responses/422.yaml
+    '429':
+      $ref: ../components/responses/429.yaml
+    '500':
+      $ref: ../components/responses/500.yaml
+    '503':
+      $ref: ../components/responses/503.yaml
+post:
+  operationId: createBulkEventsRetry
+  summary: Create a bulk retry
+  description: >-
+    This endpoint creates a bulk retry.
+
+
+    Creating a bulk retry automatically begins the operation to retry any events matching the specified filters.
+  tags:
+    - Bulk retries
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/CreateBulkEventsRetry.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BulkEventsRetry.yaml
+      headers:
+        Retry-After:
+          $ref: ../components/headers/Retry-After.yaml
+        X-RateLimit-Limit:
+          $ref: ../components/headers/X-RateLimit-Limit.yaml
+        X-RateLimit-Limit-Remaining:
+          $ref: ../components/headers/X-RateLimit-Remaining.yaml
+        X-RateLimit-Limit-Reset:
+          $ref: ../components/headers/X-RateLimit-Reset.yaml
+    '400':
+      $ref: ../components/responses/400.yaml
+    '401':
+      $ref: ../components/responses/401.yaml
+    '403':
+      $ref: ../components/responses/403.yaml
+    '404':
+      $ref: ../components/responses/404.yaml
+    '413':
+      $ref: ../components/responses/413.yaml
+    '422':
+      $ref: ../components/responses/422.yaml
+    '429':
+      $ref: ../components/responses/429.yaml
+    '500':
+      $ref: ../components/responses/500.yaml
+    '503':
+      $ref: ../components/responses/503.yaml

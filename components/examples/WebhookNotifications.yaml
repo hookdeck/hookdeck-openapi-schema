@@ -1,0 +1,6 @@
+summary: Webhook notifications settings
+value:
+  enabled: true
+  source_id: src_9YmY0SHklrv6zBQz78cKGwSW
+  topics:
+    - 'issue.opened'

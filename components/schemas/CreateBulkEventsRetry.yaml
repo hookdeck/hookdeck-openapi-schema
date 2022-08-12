@@ -1,0 +1,10 @@
+type: object
+properties:
+  query:
+    type: object
+    description: Query object to filter events, use query parameters of Event
+
+example:
+  query:
+    source_id:
+      - src_oDhfDrVAZV6OIPdBzcD97of2
