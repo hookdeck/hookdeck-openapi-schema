@@ -7,7 +7,7 @@
     "lint": "prettier -c .",
     "format": "prettier -w .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bundle": "redocly bundle -d --output dist openapi.yaml",
+    "bundle": "redocly bundle -d --output dist/hookdeck.yaml openapi.yaml",
     "preview": "redocly preview-docs openapi.yaml"
   },
   "repository": {
