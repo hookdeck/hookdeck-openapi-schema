@@ -1,0 +1,10 @@
+description: Paginated response of issues
+allOf:
+  - $ref: ./PaginatedResponse.yaml
+  - type: object
+    properties:
+      models:
+        type: array
+        items:
+          $ref: ./Issue.yaml
+        readOnly: true

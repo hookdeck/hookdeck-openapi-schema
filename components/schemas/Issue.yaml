@@ -1,0 +1,144 @@
+type: object
+description: >-
+  Issues let you track problems in your workspace and communicate resolution steps with your team.
+properties:
+  id:
+    type: string
+    description: ID of the issue
+    readOnly: true
+  team_id:
+    type: string
+    description: ID of the workspace
+    readOnly: true
+  type:
+    type: string
+    description: Issue type
+    readOnly: true
+  status:
+    type: string
+    description: Issue status
+    enum:
+      - OPENED
+      - ACKNOWLEDGED
+      - RESOLVED
+      - IGNORED
+    readOnly: true
+    default: OPENED
+  aggregation_keys:
+    type: object
+    description: The keys on which the issue is aggregated
+    readOnly: true
+  reference:
+    type: object
+    description: ID references to the object that opened the issue
+    readOnly: true
+  last_updated_by:
+    type: string
+    description: ID of the team member who last updated the issue status
+    readOnly: true
+    nullable: true
+    default: null
+  first_seen_at:
+    type: string
+    format: date
+    description: ISO timestamp for when the issue was first opened
+    readOnly: true
+  last_seen_at:
+    type: string
+    format: date
+    description: ISO timestamp for when the issue last occured
+    readOnly: true
+  dismissed_at:
+    type: string
+    format: date
+    description: ISO timestamp for when the issue was dismissed
+    readOnly: true
+    nullable: true
+    default: null
+  opened_at:
+    type: string
+    format: date
+    description: ISO timestamp for when the issue was last opened
+    readOnly: true
+  updated_at:
+    type: string
+    format: date
+    description: ISO timestamp for when the issue was last updated
+    readOnly: true
+  created_at:
+    type: string
+    format: date
+    description: ISO timestamp for when the issue was created
+    readOnly: true
+  data:
+    type: object
+    description: Expended data of the reference object. Only populated when retrieving a single issue and not a list
+example:
+  id: iss_GKcE4uWThIvClCI56edzJGMf
+  team_id: tm_eSRQYT4zriOhHcVtvIKvHlzf
+  type: delivery
+  status: OPENED
+  aggregation_keys:
+    error_code: []
+    webhook_id:
+      - web_lo8z0VQZREANHxEwGJMUllAS
+    response_status:
+      - 500
+  reference:
+    event_id: evt_G5cAJXite5XJ65n7eVpQ9GsR
+    attempt_id: atm_wAIWERIBzHWFTYJykqYPacVA
+  last_updated_by:
+  merged_with:
+  first_seen_at: '2022-03-13T16:05:26.856Z'
+  last_seen_at: '2022-03-13T17:38:46.827Z'
+  dismissed_at:
+  opened_at: '2022-03-13T16:05:26.856Z'
+  updated_at: '2022-03-13T17:38:46.827Z'
+  created_at: '2022-03-13T16:05:26.856Z'
+  data:
+    trigger_event:
+      id: evt_G5cAJXite5XJ65n7eVpQ9GsR
+      team_id: tm_eSRQYT4zriOhHcVtvIKvHlzf
+      webhook_id: web_lo8z0VQZREANHxEwGJMUllAS
+      source_id: src_BBgENz5uR6YD5shCaBKawSGw
+      destination_id: des_vINhNu8uG4OXHxKrhPwuiK89
+      attempts: 2
+      response_status: 422
+      last_attempt_at: '2022-03-13T16:07:52.171Z'
+      next_attempt_at:
+      successful_at:
+      updated_at: '2022-03-13T16:07:52.314Z'
+      created_at: '2022-03-13T16:05:26.304Z'
+      status: FAILED
+      event_data_id: evtreq_auxUfCEIVhDwEaQHQnX1qcAy
+      cli_id:
+      request:
+        headers:
+          content-length: '20'
+          content-type: application/json
+        body:
+          example: true
+        query: ''
+        parsed_query: {}
+        path: '/'
+    trigger_attempt:
+      id: atm_wAIWERIBzHWFTYJykqYPacVA
+      team_id: tm_eSRQYT4zriOhHcVtvIKvHlzf
+      event_id: evt_G5cAJXite5XJ65n7eVpQ9GsR
+      response_status: 500
+      successful_at:
+      updated_at: '2022-03-13T16:05:26.749Z'
+      created_at: '2022-03-13T16:05:26.318Z'
+      error_code:
+      bulk_retry_id:
+      status: FAILED
+      trigger: INITIAL
+      attempt_number: 1
+      delivered_at: '2022-03-13T16:05:26.597Z'
+      responded_at: '2022-03-13T16:05:26.747Z'
+      delivery_latency: 279
+      response_latency: 150
+      archived_at:
+      body:
+        example: true
+      requested_url: https://mock.hookdeck.com/?status=random

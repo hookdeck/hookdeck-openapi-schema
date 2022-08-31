@@ -366,6 +366,176 @@ tags:
 
 
       Each valid HTTP request received at that URL creates an `Event`.
+  - name: Destinations
+    description: >-
+      A destination is any endpoint to which your webhooks can be routed.
+  - name: Rulesets
+    description: >-
+      A ruleset defines a group of rules that can be used across many connections.
+  - name: Requests
+    description: >-
+      A request represent a webhook received by Hookdeck.
+  - name: Events
+    description: >-
+      An event is any request that Hookdeck receives from a source.
+  - name: Attempts
+    description: >-
+      An attempt is any request that Hookdeck makes on behalf of an event.
+  - name: Bulk retries
+    description: >-
+      A bulk retry re-attempts delivery for one or more events, based on a filter.
+
+      ```Events on paused connections will still be retried unless excluded from the query.```
+  - name: Bookmarks
+    description: >-
+      A bookmark lets you conveniently store and replay a specific request.
+  - name: Issues
+    description: >-
+      Issues let you track problems in your workspace and communicate resolution steps with your team.
+  - name: Notifications
+    description: >-
+      Notifications let your team receive alerts anytime an issue changes.
+  - name: Integrations
+    description: >-
+      An integration configures platform-specific behaviors, such as signature verification.
+
+
+      # Providers and features
+
+
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Behavior</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>VERIFICATION</code></td>
+            <td>Enable authenticity verification when a request is received by Hookdeck. If the request is not authentic, it will be ignored and not create an event.</td>
+          </tr>
+          <tr>
+            <td><code>HANDSHAKE</code></td>
+            <td>Enable handshake (or URL validation) for platforms that require it, and use a unique value to perform the handshake.</td>
+          </tr>
+          <tr>
+            <td><code>POLLING</code></td>
+            <td><b>PREVIEW ONLY.</b> Enable automatic polling and reconciliation.</td>
+        </tr>          
+        </tbody> 
+      </table>
+
+
+      ## Supported features by provider
+
+      Each ```provider``` has a set of available ```features```. Additionally, each ```feature``` requires a set of Key/Value configuration parameters that need to be defined as part of the ```configs``` object.
+
+
+      <table>
+        <thead>
+          <tr>
+            <th>Provider</th>
+            <th>Features</th>
+            <th>Config Keys</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>twitter</td>
+            <td><code>HANDSHAKE</code></td>
+            <td><code>api_key</code></td>
+          </tr>
+          <tr>
+            <td>recharge</td>
+            <td><code>VERIFICATION</code></td>
+            <td><code>webhook_secret_key</code></td>
+          </tr>
+          <tr>
+            <td>stripe</td>
+            <td><code>VERIFICATION</code></td>
+            <td><code>webhook_secret_key</code></td>
+          </tr>
+          <tr>
+            <td>shopify</td>
+            <td><code>VERIFICATION</code></td>
+            <td><code>webhook_secret_key</code></td>
+          </tr>
+          <tr>
+            <td>shopify</td>
+            <td><code>POLLING</code></td>
+            <td><a href="https://hookdeck.com/contact-us">Contact us</a></td>
+          </tr>
+          <tr>
+            <td>github</td>
+            <td><code>VERIFICATION</code></td>
+            <td><code>webhook_secret_key</code></td>
+          </tr>
+          <tr>
+            <td>postmark</td>
+            <td><code>VERIFICATION</code></td>
+            <td><code>webhook_secret_key</code></td>
+          </tr>
+        </tbody> 
+      </table>
+
+
+      ## Supported features for generic configurations
+
+      Generic configurations let you add support for providers that are not explicitly supported.
+
+
+      <table>
+        <thead>
+          <tr>
+            <th>Generic</th>
+            <th>Features</th>
+            <th>Config Keys</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>hmac</td>
+            <td><code>VERIFICATION</code></td>
+            <td><code>algorithm</code>, <code>encoding</code>, <code>header_key</code>, <code>webhook_secret_key</code></td>
+          </tr>
+          <tr>
+            <td>basic_auth</td>
+            <td><code>VERIFICATION</code></td>
+            <td><code>name</code>, <code>password</code></td>
+          </tr>
+          <tr>
+            <td>api_key</td>
+            <td><code>VERIFICATION</code></td>
+            <td></td>
+          </tr>
+        </tbody> 
+      </table>
+
+      ## Supported values for generic HMAC keys
+
+      The following value types are supported for generic HMAC implementations.
+
+
+      <table>
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Supported values</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>algorithm</code></td>
+            <td><code>sha256</code>, <code>sha512</code>, <code>sha1</code>, <code>md5</code></td>
+          </tr>
+          <tr>
+            <td><code>encoding</code></td>
+            <td><code>hex</code>, <code>base64</code></td>
+          </tr>
+        </tbody> 
+      </table>
+
 paths:
   /connections:
     $ref: paths/connections.yaml
@@ -436,6 +606,22 @@ paths:
     $ref: paths/bookmarks_{id}.yaml
   /bookmarks/{id}/trigger:
     $ref: paths/bookmarks_{id}_trigger.yaml
+
+  /issues:
+    $ref: paths/issues.yaml
+  /issues/count:
+    $ref: paths/issues_count.yaml
+  /issues/{id}:
+    $ref: paths/issues_{id}.yaml
+
+  /integrations:
+    $ref: paths/integrations.yaml
+  /integrations/{id}:
+    $ref: paths/integrations_{id}.yaml
+  /integrations/{id}/attach/{source_id}:
+    $ref: paths/integrations_{id}_attach_{source_id}.yaml
+  /integrations/{id}/detach/{source_id}:
+    $ref: paths/integrations_{id}_detach_{source_id}.yaml
 
   /notifications/webhooks:
     $ref: paths/notifications.yaml
