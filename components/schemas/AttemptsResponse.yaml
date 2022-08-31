@@ -1,10 +1,10 @@
 description: Paginated response of attempts
 allOf:
-  - $ref: .\PaginatedResponse.yaml
+  - $ref: ./PaginatedResponse.yaml
   - type: object
     properties:
       models:
         type: array
         items:
-          $ref: .\Attempt.yaml
+          $ref: ./Attempt.yaml
         readOnly: true

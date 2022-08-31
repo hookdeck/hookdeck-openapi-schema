@@ -1,0 +1,59 @@
+type: object
+description: >-
+  A bookmark lets you conveniently store and replay a specific request.
+properties:
+  id:
+    type: string
+    description: ID of the bookmark
+    readOnly: true
+  team_id:
+    type: string
+    description: ID of the workspace
+  label:
+    type: string
+    description: Descriptive name of the bookmark
+  name:
+    type: string
+    description: A unique, human-friendly name for the bookmark
+    nullable: true
+    default: null
+  webhook_id:
+    type: string
+    description: ID of the associated connection
+  event_data_id:
+    type: string
+    description: ID of the bookmarked event data
+  last_used_at:
+    type: string
+    format: date
+    description: Date the bookmark was last manually triggered
+    nullable: true
+    default: null
+    readOnly: true
+  updated_at:
+    type: string
+    format: date
+    description: Date the bookmark was last updated
+    readOnly: true
+  created_at:
+    type: string
+    format: date
+    description: Date the bookmark was created
+    readOnly: true
+
+example:
+  id: bmk_zRQrmyGVDOEpPcwPqWjeI0p4
+  team_id: tm_yUEO9119dsca8EgUE6qwXdCM
+  webhook_id: web_UfM5ZY2wxLD6sLhDaKMcx5wp
+  label: Product Update - Out of Stock
+  name:
+  event_data_id: evtreq_HlJhb39nsjIP0FDsU3SY0fo7
+  last_used_at: '2021-04-29T03:46:32.390Z'
+  updated_at: '2021-04-29T03:46:32.394Z'
+  created_at: '2021-04-25T00:39:04.232Z'
+  data:
+    headers:
+      content-type: text/plain
+      content-length: '20'
+    body:
+      example: true

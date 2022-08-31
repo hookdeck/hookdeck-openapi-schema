@@ -46,16 +46,16 @@ info:
     > Basic Authentication is also supported with the API key as username and
     empty password
 
-     ``` 
+     ```
     curl "https://api.hookdeck.com/2022-03-01/events"
        -H "Content-Type: application/json"
        -H "Authorization: Bearer $API_KEY"
-     ``` 
-     
+     ```
+
     * * *
-     
+
     # Paging
-     
+
     All `GET` endpoints to retrieve a list of resources are paged using cursor
     (keyset, seek) pagination.
 
@@ -75,7 +75,7 @@ info:
     to get the next set of results</td> </tr> <tr> <td>prev</td>
     <td><code>undefined</code></td> <td>The ID / cursor to provide in the query
     to get the previous set of results</td> </tr> </tbody> </table>
-     
+
     Unless you have specified an `order_by` or `dir`, you can omit it from the
     next or previous set query. You only have to carry them over if you are not
     using the resource default.
@@ -98,7 +98,7 @@ info:
       }
     }
 
-    ``` 
+    ```
 
 
     Example to get the next page:
@@ -160,11 +160,11 @@ info:
     valid.</td> </tr> <tr> <td>400</td> <td>Bad Request -- Your request is
     invalid and could not be understood.</td> </tr> <tr> <td>401</td>
     <td>Unauthorized -- Your API key is wrong.</td> </tr> <tr> <td>403</td>
-    <td>Forbidden -- The resource requested access is restricted.</td> </tr>    
+    <td>Forbidden -- The resource requested access is restricted.</td> </tr>
     <tr> <td>404</td> <td>Not Found -- The resource could not be found.</td>
     </tr>    <tr> <td>413</td> <td>Payload Too Large -- The payload is larger
     then the 100Kb limit</td> </tr>         <tr> <td>422</td> <td>Unprocessable
-    Entry -- Your request was understood but contains invalid input.</td> </tr> 
+    Entry -- Your request was understood but contains invalid input.</td> </tr>
     <tr> <td>429</td> <td>Too Many Requests -- The request limit for that time
     period has been reached</td> </tr>        <tr> <td>500</td> <td>Internal
     Server Error -- We had a problem with our server. Try again later.</td>
@@ -288,17 +288,17 @@ info:
     ## 2022-03-01
 
       - Removed the `interval` property from the Alert Rule. Alert rule now controls how new issues are opened and notifications are now triggered by an issue opening or re-opening.
-      
+
     ### Introducing Issues
 
       - You can now use the Issues API to retrieve, update, and dismiss problems within your workspace.
-      
+
     ### Introducing Notifications by Webhook
 
      - You can now use the Notifications API to configure webhook notifications for your workspace.
-     
+
     * * *
-     
+
     ## 2021-08-01
       - Removed the `label` property for Sources, Destinations, Rulesets and Connections.
       - Renamed the `alias` property to `name` for Sources, Destinations, Rulesets and Connections.
@@ -311,7 +311,7 @@ info:
 
     The removed properties of Rulesets and Connections have been replaced by the
     rules array. Each rules has a type and a set of property to configure it's
-    behavior. Rules definitions are found here 
+    behavior. Rules definitions are found here
 
     * * *
 
@@ -410,13 +410,32 @@ paths:
   /events:
     $ref: paths/events.yaml
   /events/{id}:
-    $ref: paths\events_{id}.yaml
+    $ref: paths/events_{id}.yaml
   /events/{id}/retry:
-    $ref: paths\events_{id}_retry.yaml
+    $ref: paths/events_{id}_retry.yaml
   /events/{id}/mute:
-    $ref: paths\events_{id}_mute.yaml
+    $ref: paths/events_{id}_mute.yaml
 
   /attempts:
     $ref: paths/attempts.yaml
   /attempts/{id}:
     $ref: paths/attempts_{id}.yaml
+
+  /bulk/events/retry:
+    $ref: paths/bulk_events_retry.yaml
+  /bulk/events/retry/plan:
+    $ref: paths/bulk_events_retry_plan.yaml
+  /bulk/events/retry/{id}:
+    $ref: paths/bulk_events_retry_{id}.yaml
+  /bulk/events/retry/{id}/cancel:
+    $ref: paths/bulk_events_retry_{id}_cancel.yaml
+
+  /bookmarks:
+    $ref: paths/bookmarks.yaml
+  /bookmarks/{id}:
+    $ref: paths/bookmarks_{id}.yaml
+  /bookmarks/{id}/trigger:
+    $ref: paths/bookmarks_{id}_trigger.yaml
+
+  /notifications/webhooks:
+    $ref: paths/notifications.yaml

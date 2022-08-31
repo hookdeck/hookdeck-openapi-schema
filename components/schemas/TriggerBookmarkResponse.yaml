@@ -1,0 +1,35 @@
+type: array
+description: Trigger bookmark response model
+items:
+  $ref: ./Event.yaml
+  readOnly: true
+
+example:
+  - id: evt_vuHxr759DYe6LsBgDk2VOfqI
+    team_id: tm_nlcetVe8k1lMAY0KR0OxNuHr
+    webhook_id: web_UfM5ZY2wxLD6sLhDaKMcx5wp
+    source_id: src_9YmY0SHklrv6zBQz78cKGwSW
+    destination_id: des_fYYCay655IHwbOMhIaUXtNq2
+    attempts: 0
+    response_status:
+    last_attempt_at:
+    next_attempt_at:
+    successful_at:
+    updated_at: '2021-08-02T14:12:57.595Z'
+    created_at: '2021-08-02T14:12:57.610Z'
+    status: QUEUED
+    event_data_id: evtreq_HlJhb39nsjIP0FDsU3SY0fo7
+    cli_id:
+    data:
+      headers:
+        content-length: '20'
+        x-original-url: '/e/src_9YmY0SHklrv6zBQz78cKGwSW'
+        cookie: ''
+        x-client-version: FirebaseCLI/undefined
+        content-type: application/json
+        user-agent: FirebaseCLI/undefined
+      body:
+        test: true
+      query: ''
+      parsed_query: {}
+      path: '/'

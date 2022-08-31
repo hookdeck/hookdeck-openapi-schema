@@ -1,10 +1,10 @@
 description: Paginated response of sources
 allOf:
-  - $ref: .\PaginatedResponse.yaml
+  - $ref: ./PaginatedResponse.yaml
   - type: object
     properties:
       models:
         type: array
         items:
-          $ref: .\Source.yaml
+          $ref: ./Source.yaml
         readOnly: true

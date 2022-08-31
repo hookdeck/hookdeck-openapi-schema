@@ -1,0 +1,210 @@
+get:
+  operationId: getAllEvents
+  summary: Retrieve all events
+  description: >-
+    This endpoint lists all events, or a subset of events.
+
+
+    ### Filtering events
+
+    To filter the list of events, use only supported operators.
+
+
+    For example, append ```?created_at[gte]=2021-10-12&created_at[lte]=2021-10-13``` to retrieve events for that specific 24-hour period.
+
+
+    ### Including event data
+
+    To retrieve events with their ```data``` populated, use the ```?include=data``` query parameter. Be aware that this can lead to very large responses.
+
+
+    Payload data exceeding 2.5 MB won't be returned, and ```data.body``` will be set to ```null```. The request path, query and headers are still included.
+
+
+    > To distinguish between these large payloads and payloads set to the JSON literal ```null```, leverage ```headers['content-length']```.
+
+
+    ### Including CLI events
+
+    CLI events are excluded from the results by default. To query CLI events, use ```/events?cli_id[any]=true```.
+  tags:
+    - Events
+  parameters:
+    - name: id
+      in: query
+      description: Filter by event ids
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    - name: webhook_id
+      in: query
+      description: Filter by webhook connection ids
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    - name: source_id
+      in: query
+      description: Filter by source ids
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    - name: destination_id
+      in: query
+      description: Filter by destination ids
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    - name: cli_id
+      in: query
+      description: Filter by CLI IDs. ```?[any]=true``` operator for any CLI. Defaults to null
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    - name: status
+      in: query
+      description: Lifecyle status of the event
+      required: false
+      schema:
+        type: string
+        enum:
+          - QUEUED
+          - HOLD
+          - SUCCESSFUL
+          - FAILED
+    - name: response_status
+      in: query
+      description: Filter by HTTP response status code
+      required: false
+      schema:
+        type: number
+    - name: attempts
+      in: query
+      description: Filter by number of attempts
+      required: false
+      schema:
+        type: number
+    - name: created_at
+      in: query
+      description: Filter by created_at date using a date operator
+      required: false
+      schema:
+        type: string
+        format: date
+    - name: successful_at
+      in: query
+      description: Filter by successful_at date using a date operator
+      required: false
+      schema:
+        type: string
+        format: date
+    - name: last_attempt_at
+      in: query
+      description: Filter by last_attempt_at date using a date operator
+      required: false
+      schema:
+        type: string
+        format: date
+    - name: next_attempt_at
+      in: query
+      description: Filter by next_attempt_at date using a date operator
+      required: false
+      schema:
+        type: string
+        format: date
+    - name: body
+      in: query
+      description: URL Encoded string of the JSON to match to the data body
+      required: false
+      schema:
+        type: string
+    - name: headers
+      in: query
+      description: URL Encoded string of the JSON to match to the data headers
+      required: false
+      schema:
+        type: string
+    - name: parsed_query
+      in: query
+      description: URL Encoded string of the JSON to match to the parsed query (JSON representation of the query)
+      required: false
+      schema:
+        type: string
+    - name: path
+      in: query
+      description: URL Encoded string of the string to match partially to the path
+      required: false
+      schema:
+        type: string
+    - name: include
+      in: query
+      description: Include the data object in the event model
+      required: false
+      schema:
+        type: string
+        enum:
+          - data
+    - name: limit
+      in: query
+      description: Limit the returned event count. Max 250.
+      required: false
+      schema:
+        type: number
+        format: int32
+        maximum: 250
+    - name: order_by
+      in: query
+      description: Specify order column
+      required: false
+      schema:
+        type: string
+        enum:
+          - created_at
+          - last_attempt_at
+        default: created_at
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/EventsResponse.yaml
+          examples:
+            Events:
+              $ref: ../components/examples/Events.yaml
+      headers:
+        Retry-After:
+          $ref: ../components/headers/Retry-After.yaml
+        X-RateLimit-Limit:
+          $ref: ../components/headers/X-RateLimit-Limit.yaml
+        X-RateLimit-Limit-Remaining:
+          $ref: ../components/headers/X-RateLimit-Remaining.yaml
+        X-RateLimit-Limit-Reset:
+          $ref: ../components/headers/X-RateLimit-Reset.yaml
+    '400':
+      $ref: ../components/responses/400.yaml
+    '401':
+      $ref: ../components/responses/401.yaml
+    '403':
+      $ref: ../components/responses/403.yaml
+    '404':
+      $ref: ../components/responses/404.yaml
+    '413':
+      $ref: ../components/responses/413.yaml
+    '422':
+      $ref: ../components/responses/422.yaml
+    '429':
+      $ref: ../components/responses/429.yaml
+    '500':
+      $ref: ../components/responses/500.yaml
+    '503':
+      $ref: ../components/responses/503.yaml

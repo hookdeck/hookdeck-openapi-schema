@@ -1,0 +1,10 @@
+description: Paginated response of bookmarks
+allOf:
+  - $ref: ./PaginatedResponse.yaml
+  - type: object
+    properties:
+      models:
+        type: array
+        items:
+          $ref: ./Bookmark.yaml
+        readOnly: true

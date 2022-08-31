@@ -4,7 +4,7 @@ description: >-
 content:
   application/json:
     schema:
-      $ref: ..\schemas\ErrorResponse.yaml
+      $ref: ../schemas/ErrorResponse.yaml
     example:
       handled: false
       status: 503
@@ -13,10 +13,10 @@ content:
         id: web_xxxxxxxxxxx
 headers:
   Retry-After:
-    $ref: ..\headers\Retry-After.yaml
+    $ref: ../headers/Retry-After.yaml
   X-RateLimit-Limit:
-    $ref: ..\headers\X-RateLimit-Limit.yaml
+    $ref: ../headers/X-RateLimit-Limit.yaml
   X-RateLimit-Limit-Remaining:
-    $ref: ..\headers\X-RateLimit-Remaining.yaml
+    $ref: ../headers/X-RateLimit-Remaining.yaml
   X-RateLimit-Limit-Reset:
-    $ref: ..\headers\X-RateLimit-Reset.yaml
+    $ref: ../headers/X-RateLimit-Reset.yaml

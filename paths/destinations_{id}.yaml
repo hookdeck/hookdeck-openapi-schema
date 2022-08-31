@@ -1,0 +1,112 @@
+get:
+  operationId: getDestination
+  summary: Retrieve a destination
+  tags:
+    - Destinations
+  parameters:
+    - name: id
+      in: path
+      description: Destination ID
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Destination.yaml
+          examples:
+            Destination:
+              $ref: ../components/examples/Destination.yaml
+      headers:
+        Retry-After:
+          $ref: ../components/headers/Retry-After.yaml
+        X-RateLimit-Limit:
+          $ref: ../components/headers/X-RateLimit-Limit.yaml
+        X-RateLimit-Limit-Remaining:
+          $ref: ../components/headers/X-RateLimit-Remaining.yaml
+        X-RateLimit-Limit-Reset:
+          $ref: ../components/headers/X-RateLimit-Reset.yaml
+    '400':
+      $ref: ../components/responses/400.yaml
+    '401':
+      $ref: ../components/responses/401.yaml
+    '403':
+      $ref: ../components/responses/403.yaml
+    '404':
+      $ref: ../components/responses/404.yaml
+    '413':
+      $ref: ../components/responses/413.yaml
+    '422':
+      $ref: ../components/responses/422.yaml
+    '429':
+      $ref: ../components/responses/429.yaml
+    '500':
+      $ref: ../components/responses/500.yaml
+    '503':
+      $ref: ../components/responses/503.yaml
+put:
+  operationId: updateDestination
+  summary: Update a destination
+  description: >-
+    This endpoint updates a destination.
+
+    One of ```url``` or ```cli_path``` is required.
+  tags:
+    - Destinations
+  parameters:
+    - name: id
+      in: path
+      description: Destination ID
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/UpsertDestinationRequest.yaml
+        example:
+          name: my-api
+          url: https://example.com/webhook
+          rate_limit: 5
+          rate_limit_period: second
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Destination.yaml
+          examples:
+            Destination:
+              $ref: ../components/examples/UpsertedDestination.yaml
+      headers:
+        Retry-After:
+          $ref: ../components/headers/Retry-After.yaml
+        X-RateLimit-Limit:
+          $ref: ../components/headers/X-RateLimit-Limit.yaml
+        X-RateLimit-Limit-Remaining:
+          $ref: ../components/headers/X-RateLimit-Remaining.yaml
+        X-RateLimit-Limit-Reset:
+          $ref: ../components/headers/X-RateLimit-Reset.yaml
+    '400':
+      $ref: ../components/responses/400.yaml
+    '401':
+      $ref: ../components/responses/401.yaml
+    '403':
+      $ref: ../components/responses/403.yaml
+    '404':
+      $ref: ../components/responses/404.yaml
+    '413':
+      $ref: ../components/responses/413.yaml
+    '422':
+      $ref: ../components/responses/422.yaml
+    '429':
+      $ref: ../components/responses/429.yaml
+    '500':
+      $ref: ../components/responses/500.yaml
+    '503':
+      $ref: ../components/responses/503.yaml

@@ -1,0 +1,133 @@
+get:
+  operationId: getAllBookmarks
+  summary: Retrieve all bookmarks, or a subset of bookmarks
+  tags:
+    - Bookmarks
+  parameters:
+    - name: id
+      in: query
+      description: Filter by bookmark id
+      required: false
+      schema:
+        type: string
+    - name: name
+      in: query
+      description: Filter by the bookmark name
+      required: false
+      schema:
+        type: string
+    - name: webhook_id
+      in: query
+      description: Filter by associated connection ID
+      required: false
+      schema:
+        type: string
+    - name: event_data_id
+      in: query
+      description: Filter by associated event data ID
+      required: false
+      schema:
+        type: string
+    - name: label
+      in: query
+      description: Filter by label
+      required: false
+      schema:
+        type: string
+    - name: last_used_at
+      in: query
+      description: Filter by last used date
+      required: false
+      schema:
+        type: string
+        format: date
+    - name: limit
+      in: query
+      description: Limit the returned event count (max 250)
+      required: false
+      schema:
+        type: number
+        format: int32
+        maximum: 250
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/BookmarksResponse.yaml
+          examples:
+            Rulesets:
+              $ref: ../components/examples/Bookmarks.yaml
+      headers:
+        Retry-After:
+          $ref: ../components/headers/Retry-After.yaml
+        X-RateLimit-Limit:
+          $ref: ../components/headers/X-RateLimit-Limit.yaml
+        X-RateLimit-Limit-Remaining:
+          $ref: ../components/headers/X-RateLimit-Remaining.yaml
+        X-RateLimit-Limit-Reset:
+          $ref: ../components/headers/X-RateLimit-Reset.yaml
+    '400':
+      $ref: ../components/responses/400.yaml
+    '401':
+      $ref: ../components/responses/401.yaml
+    '403':
+      $ref: ../components/responses/403.yaml
+    '404':
+      $ref: ../components/responses/404.yaml
+    '413':
+      $ref: ../components/responses/413.yaml
+    '422':
+      $ref: ../components/responses/422.yaml
+    '429':
+      $ref: ../components/responses/429.yaml
+    '500':
+      $ref: ../components/responses/500.yaml
+    '503':
+      $ref: ../components/responses/503.yaml
+post:
+  operationId: createBookmark
+  summary: Create a bookmark
+  description: This endpoint creates a bookmark
+  tags:
+    - Bookmarks
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/UpsertBookmarkRequest.yaml
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Bookmark.yaml
+      headers:
+        Retry-After:
+          $ref: ../components/headers/Retry-After.yaml
+        X-RateLimit-Limit:
+          $ref: ../components/headers/X-RateLimit-Limit.yaml
+        X-RateLimit-Limit-Remaining:
+          $ref: ../components/headers/X-RateLimit-Remaining.yaml
+        X-RateLimit-Limit-Reset:
+          $ref: ../components/headers/X-RateLimit-Reset.yaml
+    '400':
+      $ref: ../components/responses/400.yaml
+    '401':
+      $ref: ../components/responses/401.yaml
+    '403':
+      $ref: ../components/responses/403.yaml
+    '404':
+      $ref: ../components/responses/404.yaml
+    '413':
+      $ref: ../components/responses/413.yaml
+    '422':
+      $ref: ../components/responses/422.yaml
+    '429':
+      $ref: ../components/responses/429.yaml
+    '500':
+      $ref: ../components/responses/500.yaml
+    '503':
+      $ref: ../components/responses/503.yaml

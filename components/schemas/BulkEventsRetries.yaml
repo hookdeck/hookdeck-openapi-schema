@@ -1,0 +1,10 @@
+description: Paginated response of bulk retries
+allOf:
+  - $ref: ./PaginatedResponse.yaml
+  - type: object
+    properties:
+      models:
+        type: array
+        items:
+          $ref: ./BulkEventsRetry.yaml
+        readOnly: true

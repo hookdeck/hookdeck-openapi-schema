@@ -1,0 +1,12 @@
+type: object
+properties:
+  estimated_event_count:
+    type: number
+    description: Estimated number of events
+  estimated_batch_count:
+    type: number
+    description: Estimated number of batches
+
+example:
+  estimated_event_count: 301
+  estimated_batch_count: 2
