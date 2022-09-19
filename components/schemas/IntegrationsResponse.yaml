@@ -1,0 +1,10 @@
+description: Paginated response of integrations
+allOf:
+  - $ref: ./PaginatedResponse.yaml
+  - type: object
+    properties:
+      models:
+        type: array
+        items:
+          $ref: ./Integration.yaml
+        readOnly: true

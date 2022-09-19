@@ -1,0 +1,129 @@
+get:
+  operationId: getAllIssues
+  summary: Retrieve all issues
+  tags:
+    - Issues
+  parameters:
+    - name: id
+      in: query
+      description: Filter by issue IDs
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    - name: type
+      in: query
+      description: The issue type
+      required: false
+      schema:
+        type: string
+    - name: status
+      in: query
+      description: The issue status
+      required: false
+      schema:
+        type: string
+    - name: merged_with
+      in: query
+      description: The issue ID it was merged with
+      required: false
+      schema:
+        type: string
+    - name: aggregation_keys
+      in: query
+      description: JSON that will evaluate has a partial match of issue ```aggregation_keys```
+      required: false
+      schema:
+        type: string
+    - name: created_at
+      in: query
+      description: Date the issues were created
+      required: false
+      schema:
+        type: string
+        format: date
+    - name: first_seen_at
+      in: query
+      description: Date the issues were first seen
+      required: false
+      schema:
+        type: string
+        format: date
+    - name: last_seen_at
+      in: query
+      description: Date the issues were last seen
+      required: false
+      schema:
+        type: string
+        format: date
+    - name: dismissed_at
+      in: query
+      description: Date the issues were dismissed
+      required: false
+      schema:
+        type: string
+        format: date
+    - name: opened_at
+      in: query
+      description: Date the issues were opened
+      required: false
+      schema:
+        type: string
+        format: date
+    - name: order_by
+      in: query
+      description: The date property to order by
+      required: false
+      schema:
+        type: string
+    - name: dir
+      in: query
+      description: The ordering direction
+      required: false
+      schema:
+        type: string
+    - name: limit
+      in: query
+      description: Limit the returned model count (max 250)
+      required: false
+      schema:
+        type: number
+        maximum: 250
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/IssuesResponse.yaml
+          examples:
+            Issues:
+              $ref: ../components/examples/Issues.yaml
+      headers:
+        Retry-After:
+          $ref: ../components/headers/Retry-After.yaml
+        X-RateLimit-Limit:
+          $ref: ../components/headers/X-RateLimit-Limit.yaml
+        X-RateLimit-Limit-Remaining:
+          $ref: ../components/headers/X-RateLimit-Remaining.yaml
+        X-RateLimit-Limit-Reset:
+          $ref: ../components/headers/X-RateLimit-Reset.yaml
+    '400':
+      $ref: ../components/responses/400.yaml
+    '401':
+      $ref: ../components/responses/401.yaml
+    '403':
+      $ref: ../components/responses/403.yaml
+    '404':
+      $ref: ../components/responses/404.yaml
+    '413':
+      $ref: ../components/responses/413.yaml
+    '422':
+      $ref: ../components/responses/422.yaml
+    '429':
+      $ref: ../components/responses/429.yaml
+    '500':
+      $ref: ../components/responses/500.yaml
+    '503':
+      $ref: ../components/responses/503.yaml

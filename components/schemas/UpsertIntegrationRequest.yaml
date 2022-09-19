@@ -1,0 +1,28 @@
+type: object
+description: Request body for integration update
+properties:
+  label:
+    type: string
+    description: Label of the integration
+  provider:
+    type: string
+    enum:
+      - twitter
+      - recharge
+      - stripe
+      - shopify
+      - github
+      - postmark
+    description: The provider name
+  features:
+    type: array
+    items:
+      type: string
+      enum:
+        - VERIFICATION
+        - HANDSHAKE
+        - POLLING
+    description: List of features to enable
+  configs:
+    type: object
+    description: Decrypted Key/Value object of the associated configuration for that provider

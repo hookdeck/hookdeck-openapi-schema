@@ -1,0 +1,19 @@
+summary: List of integrations
+value:
+  pagination:
+    order_by: created_at
+    dir: desc
+    limit: 100
+  count: 1
+  models:
+    - id: int_9wnkSCsbk8nPOy
+      team_id: tm_AkLVUIfTy4nn
+      label: Shopify
+      provider: shopify
+      updated_at: '2022-06-13T13:27:16.822Z'
+      created_at: '2022-06-13T13:27:16.821Z'
+      features:
+        - VERIFICATION
+      sources: []
+      configs:
+        webhook_secret_key: your-secret

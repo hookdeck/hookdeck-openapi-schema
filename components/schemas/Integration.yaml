@@ -1,0 +1,62 @@
+type: object
+description: An integration configures platform-specific behaviors, such as signature verification.
+properties:
+  id:
+    type: string
+    description: ID of the integration
+    readOnly: true
+  team_id:
+    type: string
+    description: ID of the workspace
+  label:
+    type: string
+    description: Label of the integration
+  provider:
+    type: string
+    enum:
+      - twitter
+      - recharge
+      - stripe
+      - shopify
+      - github
+      - postmark
+    description: The provider name
+  features:
+    type: array
+    items:
+      type: string
+      enum:
+        - VERIFICATION
+        - HANDSHAKE
+        - POLLING
+    description: List of features to enable
+  configs:
+    type: object
+    description: Decrypted Key/Value object of the associated configuration for that provider
+  sources:
+    type: array
+    items:
+      type: string
+    description: List of source IDs the integration is attached to
+  updated_at:
+    type: string
+    format: date
+    description: Date the integration was last updated
+    readOnly: true
+  created_at:
+    type: string
+    format: date
+    description: Date the integration was created
+    readOnly: true
+example:
+  id: int_9wnkSCsbk8nPOy
+  team_id: tm_AkLVUIfTy4nn
+  label: Shopify
+  provider: shopify
+  updated_at: '2022-06-13T13:27:16.822Z'
+  created_at: '2022-06-13T13:27:16.821Z'
+  features:
+    - VERIFICATION
+  sources: []
+  configs:
+    webhook_secret_key: your-secret
