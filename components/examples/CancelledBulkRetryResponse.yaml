@@ -7,13 +7,12 @@ updated_at: '2022-05-13T09:06:03.983Z'
 created_at: '2022-05-13T09:05:55.394Z'
 completed_at:
 cancelled_at: '2022-05-13T09:06:03.982Z'
-estimated_batch_count: 4
-processed_batch_count: 2
-estimated_event_count: 28
-delivered_event_count: 8
-failed_event_count: 0
+estimated_batch: 4
+processed_batch: 2
+estimated_count: 28
+completed_count: 8
+failed_count: 0
 retry_number: 15
 final_event_id: evt_Vx3791i042fJFZJ11A
-last_processed_event_id: evt_Vx3791i042fJFZJ11A
 in_progress: false
 progress: 0.29

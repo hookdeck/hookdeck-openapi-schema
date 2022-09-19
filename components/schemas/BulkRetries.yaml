@@ -6,5 +6,5 @@ allOf:
       models:
         type: array
         items:
-          $ref: ./BulkEventsRetry.yaml
+          $ref: ./BulkRetry.yaml
         readOnly: true

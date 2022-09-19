@@ -1,13 +1,13 @@
 get:
-  operationId: getEventsBulkRetryPlan
-  summary: Generate an events bulk retry plan
+  operationId: getRequestsBulkRetryPlan
+  summary: Generate a requests bulk retry plan
   description: This endpoint estimates the number of events that will be retried with the given query parameters.
   tags:
     - Bulk retries
   parameters:
     - name: query
       in: query
-      description: Filter by the bulk retry events query object, use query parameters of Event
+      description: Filter by the bulk retry events query object, use query parameters of Request
       required: false
       schema:
         type: string

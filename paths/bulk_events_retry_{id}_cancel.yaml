@@ -1,6 +1,6 @@
 post:
-  operationId: cancelBulkEventsRetry
-  summary: Cancel a bulk retry
+  operationId: cancelEventsBulkRetry
+  summary: Cancel an events bulk retry
   description: This endpoint stops a bulk retry if it's currently running.
   tags:
     - Bulk retries
@@ -17,9 +17,9 @@ post:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BulkEventsRetry.yaml
+            $ref: ../components/schemas/BulkRetry.yaml
           example:
-            $ref: ../components/examples/CancelledBulkEventsRetryResponse.yaml
+            $ref: ../components/examples/CancelledBulkRetryResponse.yaml
       headers:
         Retry-After:
           $ref: ../components/headers/Retry-After.yaml

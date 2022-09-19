@@ -270,7 +270,7 @@ info:
     # Changelog
 
     When backwards-incompatible changes are made to the API, a new, dated
-    version is released. The latest version is, `2022-03-01`.
+    version is released. The latest version is, `2022-10-01`.
 
 
     The API version can be set in the base path of any endpoint such as
@@ -284,6 +284,31 @@ info:
     The backward incompatible changes are listed bellow for each version.
     Forward-compatible changes don’t need a new API version and will not appear
     in this list.
+
+    ## 2022-10-01
+
+      - Removed the properties `completed_event_id` and `last_processed_event_id` from the Event Bulk Retry model
+      - Renamed the following properties on the Event Bulk Retry model
+        - `estimated_batch_count` to `estimated_batch`
+        - `processed_batch_count` to `processed_batch`
+        - `estimated_event_count` to `estimated_count`
+        - `delivered_event_count` to `completed_count`
+        - `failed_event_count` to `failed_count`
+      - Added bulk retries for `requests`
+
+    * * *
+
+    ## 2022-07-01
+
+      - Renamed the `request` property to `data` on Events and Bookmarks
+      - Renamed the `request` value to `data` when querying events with the data included, such that `/events?include=request` is now `/events?include=data`
+      - Renamed the `event_request_id` property on Events and Bookmarks to `event_data_id`
+
+    ### Introducing the Requests endpoint
+
+      - You can now use the Requests endpoint to retrieve the original requests that were received by Hookdeck, along with their associated events (including ignored events).
+
+    * * *
 
     ## 2022-03-01
 
@@ -300,6 +325,7 @@ info:
     * * *
 
     ## 2021-08-01
+
       - Removed the `label` property for Sources, Destinations, Rulesets and Connections.
       - Renamed the `alias` property to `name` for Sources, Destinations, Rulesets and Connections.
       - Removed the `alert_strategy` and `alert_interval` property for Rulesets.
@@ -599,6 +625,15 @@ paths:
     $ref: paths/bulk_events_retry_{id}.yaml
   /bulk/events/retry/{id}/cancel:
     $ref: paths/bulk_events_retry_{id}_cancel.yaml
+
+  /bulk/requests/retry:
+    $ref: paths/bulk_requests_retry.yaml
+  /bulk/requests/retry/plan:
+    $ref: paths/bulk_requests_retry_plan.yaml
+  /bulk/requests/retry/{id}:
+    $ref: paths/bulk_requests_retry_{id}.yaml
+  /bulk/requests/retry/{id}/cancel:
+    $ref: paths/bulk_requests_retry_{id}_cancel.yaml
 
   /bookmarks:
     $ref: paths/bookmarks.yaml

@@ -1,14 +1,14 @@
-get:
-  operationId: getEventsBulkRetryPlan
-  summary: Generate an events bulk retry plan
-  description: This endpoint estimates the number of events that will be retried with the given query parameters.
+post:
+  operationId: cancelRequestsBulkRetry
+  summary: Cancel a requests bulk retry
+  description: This endpoint stops a bulk retry if it's currently running.
   tags:
     - Bulk retries
   parameters:
-    - name: query
-      in: query
-      description: Filter by the bulk retry events query object, use query parameters of Event
-      required: false
+    - name: id
+      in: path
+      description: Bulk retry ID
+      required: true
       schema:
         type: string
   responses:
@@ -17,7 +17,9 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BulkRetryPlanResponse.yaml
+            $ref: ../components/schemas/BulkRetry.yaml
+          example:
+            $ref: ../components/examples/CancelledBulkRetryResponse.yaml
       headers:
         Retry-After:
           $ref: ../components/headers/Retry-After.yaml

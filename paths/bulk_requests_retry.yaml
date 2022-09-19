@@ -1,14 +1,14 @@
 get:
-  operationId: getAllEventsBulkRetries
-  summary: Retrieve all events bulk retries
+  operationId: getAllRequestsBulkRetries
+  summary: Retrieve all requests bulk retries
   description: >-
     This endpoint lists all bulk retries, or a subset of bulk retries.
 
 
-    Filter events using parameters of Events.
+    Filter events using parameters of Requests.
 
 
-    For example: ```?query[status][0]=FAILED``` will include only events that failed, whereas ```?query[status][0]=FAILED&query[status][0]=SUCCESSFUL``` will include events that both failed and succeeded.
+    For example: ```?query[rejection_cause][any]=true``` will include only requests that were rejected.
   tags:
     - Bulk retries
   parameters:
@@ -20,7 +20,7 @@ get:
         type: string
     - name: query
       in: query
-      description: Filter for events to be included in the bulk retry, use query parameters of Event
+      description: Filter for events to be included in the bulk retry, use query parameters of Request
       required: false
       schema:
         type: string
@@ -98,8 +98,8 @@ get:
     '503':
       $ref: ../components/responses/503.yaml
 post:
-  operationId: createEventsBulkRetry
-  summary: Create an events bulk retry
+  operationId: createRequestsBulkRetry
+  summary: Create a requests bulk retry
   description: >-
     This endpoint creates a bulk retry.
 
