@@ -41,33 +41,25 @@ properties:
     readOnly: true
     nullable: true
     default: null
-  estimated_batch_count:
+  estimated_batch:
     type: number
     description: Number of batches required to complete the bulk retry
     readOnly: true
-  processed_batch_count:
+  processed_batch:
     type: number
     description: Number of batches currently processed
     readOnly: true
-  estimated_event_count:
+  estimated_count:
     type: number
     description: Number of estimated events to be retried
     readOnly: true
-  delivered_event_count:
+  completed_count:
     type: number
     description: Number of events that were successfully delivered
     readOnly: true
-  failed_event_count:
+  failed_count:
     type: number
     description: Number of events that failed to be delivered
-    readOnly: true
-  completed_event_id:
-    type: string
-    description: Id of the last event to be processed in the bulk retry
-    readOnly: true
-  last_processed_event_id:
-    type: string
-    description: Id of the last event processed during the last batch operation
     readOnly: true
   progress:
     type: number
@@ -96,12 +88,10 @@ example:
   created_at: '2022-05-02T15:24:51.871Z'
   completed_at: '2022-05-02T15:27:51.871Z'
   cancelled_at:
-  estimated_batch_count: 5
-  processed_batch_count: 5
-  estimated_event_count: 1240
-  delivered_event_count: 1240
-  failed_event_count: 0
-  completed_event_id: evt_hwvLtPf2qgCcp3Kp7O
-  last_processed_event_id:
+  estimated_batch: 5
+  processed_batch: 5
+  estimated_count: 1240
+  completed_count: 1240
+  failed_count: 0
   progress: 1
   in_progress: false

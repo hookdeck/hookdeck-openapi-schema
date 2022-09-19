@@ -1,6 +1,6 @@
 get:
   operationId: getBulkEventsRetry
-  summary: Retrieve a bulk retry
+  summary: Retrieve an events bulk retry
   description: This endpoint retrieves a specific bulk retry
   tags:
     - Bulk retries
@@ -17,7 +17,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/BulkEventsRetry.yaml
+            $ref: ../components/schemas/BulkRetry.yaml
       headers:
         Retry-After:
           $ref: ../components/headers/Retry-After.yaml
