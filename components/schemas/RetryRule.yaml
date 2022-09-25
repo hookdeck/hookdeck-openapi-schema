@@ -16,12 +16,10 @@ properties:
       - exponential
     description: Algorithm to use when calculating delay between retries
   count:
-    type: number
-    format: int32
+    type: integer
     description: Maximum number of retries to attempt
   interval:
-    type: number
-    format: int32
+    type: integer
     description: Time in MS between each retry
 required:
   - type

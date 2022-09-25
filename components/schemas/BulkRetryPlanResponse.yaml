@@ -1,10 +1,10 @@
 type: object
 properties:
   estimated_count:
-    type: number
+    type: integer
     description: Estimated number of events
   estimated_batch:
-    type: number
+    type: integer
     description: Estimated number of batches
 
 example:

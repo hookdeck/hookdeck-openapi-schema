@@ -10,8 +10,7 @@ properties:
     description: Error was handled by the API and did not resolve in an uncaught exception
     readOnly: true
   status:
-    type: number
-    format: int32
+    type: integer
     description: HTTP status of the error
     readOnly: true
   message:

@@ -18,19 +18,19 @@ properties:
     readOnly: true
   successful_at:
     type: string
-    format: date
+    format: date-time
     description: Date of the successful event
     readOnly: true
     nullable: true
     default: null
   updated_at:
     type: string
-    format: date
+    format: date-time
     description: Date the event was last updated
     readOnly: true
   created_at:
     type: string
-    format: date
+    format: date-time
     description: Date the event was created
     readOnly: true
 example:

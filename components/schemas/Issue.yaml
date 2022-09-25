@@ -40,34 +40,34 @@ properties:
     default: null
   first_seen_at:
     type: string
-    format: date
+    format: date-time
     description: ISO timestamp for when the issue was first opened
     readOnly: true
   last_seen_at:
     type: string
-    format: date
+    format: date-time
     description: ISO timestamp for when the issue last occured
     readOnly: true
   dismissed_at:
     type: string
-    format: date
+    format: date-time
     description: ISO timestamp for when the issue was dismissed
     readOnly: true
     nullable: true
     default: null
   opened_at:
     type: string
-    format: date
+    format: date-time
     description: ISO timestamp for when the issue was last opened
     readOnly: true
   updated_at:
     type: string
-    format: date
+    format: date-time
     description: ISO timestamp for when the issue was last updated
     readOnly: true
   created_at:
     type: string
-    format: date
+    format: date-time
     description: ISO timestamp for when the issue was created
     readOnly: true
   data:

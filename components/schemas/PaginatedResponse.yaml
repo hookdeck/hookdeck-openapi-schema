@@ -19,8 +19,7 @@ properties:
         description: The direction of sort
         readOnly: true
       limit:
-        type: number
-        format: int32
+        type: integer
         default: 100
         maximum: 250
         description: Number of results returned per query
@@ -35,7 +34,6 @@ properties:
         readOnly: true
     readOnly: true
   count:
-    type: number
-    format: int32
+    type: integer
     description: Number of results
     readOnly: true

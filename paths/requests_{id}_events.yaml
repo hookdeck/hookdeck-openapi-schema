@@ -92,41 +92,41 @@ get:
       description: Filter by HTTP response status code
       required: false
       schema:
-        type: number
+        type: integer
     - name: attempts
       in: query
       description: Filter by number of attempts
       required: false
       schema:
-        type: number
+        type: integer
     - name: created_at
       in: query
       description: Filter by created_at date using a date operator
       required: false
       schema:
         type: string
-        format: date
+        format: date-time
     - name: successful_at
       in: query
       description: Filter by successful_at date using a date operator
       required: false
       schema:
         type: string
-        format: date
+        format: date-time
     - name: last_attempt_at
       in: query
       description: Filter by last_attempt_at date using a date operator
       required: false
       schema:
         type: string
-        format: date
+        format: date-time
     - name: next_attempt_at
       in: query
       description: Filter by next_attempt_at date using a date operator
       required: false
       schema:
         type: string
-        format: date
+        format: date-time
     - name: body
       in: query
       description: URL Encoded string of the JSON to match to the data body
@@ -164,8 +164,7 @@ get:
       description: Limit the returned event count. Max 250.
       required: false
       schema:
-        type: number
-        format: int32
+        type: integer
         maximum: 250
     - name: order_by
       in: query

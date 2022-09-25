@@ -40,12 +40,12 @@ properties:
     description: List of source IDs the integration is attached to
   updated_at:
     type: string
-    format: date
+    format: date-time
     description: Date the integration was last updated
     readOnly: true
   created_at:
     type: string
-    format: date
+    format: date-time
     description: Date the integration was created
     readOnly: true
 example:

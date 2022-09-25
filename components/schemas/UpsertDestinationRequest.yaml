@@ -11,7 +11,7 @@ properties:
     type: string
     description: Path for the CLI destination
   rate_limit:
-    type: number
+    type: integer
     description: Limit event attempts to receive per period. Max 100/second or 6000/minute.
   rate_limit_period:
     type: string

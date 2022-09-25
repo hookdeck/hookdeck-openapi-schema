@@ -17,19 +17,19 @@ properties:
     description: Name for the source
   archived_at:
     type: string
-    format: date
+    format: date-time
     description: Date the source was archived
     readOnly: true
     nullable: true
     default: null
   updated_at:
     type: string
-    format: date
+    format: date-time
     description: Date the source was last updated
     readOnly: true
   created_at:
     type: string
-    format: date
+    format: date-time
     description: Date the source was created
     readOnly: true
   url:
