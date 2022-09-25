@@ -121,6 +121,4 @@ example:
       example: true
     query: ''
     parsed_query: {}
-    path: "/"
-  
-
+    path: '/'

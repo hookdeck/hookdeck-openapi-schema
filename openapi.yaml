@@ -356,7 +356,7 @@ components:
       scheme: basic
     bearerAuth:
       type: http
-      scheme: bearer      
+      scheme: bearer
 servers:
   - url: https://api.hookdeck.com/{version}
     description: Production API

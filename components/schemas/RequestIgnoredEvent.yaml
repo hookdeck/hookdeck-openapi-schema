@@ -32,7 +32,7 @@ properties:
     readOnly: true
     items:
       type: string
-  
+
 example:
   request_id: req_M3ltWOSF8G6oMS9GS9XX
   team_id: tm_AkLVUIfTy4nn
@@ -41,5 +41,3 @@ example:
   cause: CLI_DISCONNECTED
   webhook_id: web_Tqy2KliIrX1A
   meta:
-  
-

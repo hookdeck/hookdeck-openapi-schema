@@ -8,8 +8,8 @@ allOf:
         items:
           $ref: ./Request.yaml
         readOnly: true
-        
-example: 
+
+example:
   pagination:
     order_by: created_at
     dir: desc

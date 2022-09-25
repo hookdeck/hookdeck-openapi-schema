@@ -5,7 +5,7 @@ properties:
     $ref: ./Event.yaml
   attempt:
     $ref: ./Attempt.yaml
-    
+
 example:
   event:
     id: evt_njCeMZHzNhJWdkkZ7PLCfEw5

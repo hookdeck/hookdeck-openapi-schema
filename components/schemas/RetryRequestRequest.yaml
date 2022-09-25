@@ -7,6 +7,6 @@ properties:
       type: string
 
 example:
-  webhook_ids: 
+  webhook_ids:
     - web_lfMH5m6GpkO1
     - web_I01KDNgvbS5G

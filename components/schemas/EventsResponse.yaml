@@ -8,7 +8,7 @@ allOf:
         items:
           $ref: ./Event.yaml
         readOnly: true
-example: 
+example:
   pagination:
     order_by: created_at
     dir: desc
