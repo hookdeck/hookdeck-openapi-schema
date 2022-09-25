@@ -15,7 +15,7 @@ properties:
     description: ID of the request
     readOnly: true
   ignored_event_cause_id:
-    type: number
+    type: integer
     description: Undocumented
     readOnly: true
   cause:

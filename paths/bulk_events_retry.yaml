@@ -36,21 +36,21 @@ get:
       required: false
       schema:
         type: string
-        format: date
+        format: date-time
     - name: completed_at
       in: query
       description: Filter by date the bulk retry completed
       required: false
       schema:
         type: string
-        format: date
+        format: date-time
     - name: created_at
       in: query
       description: Filter by date the bulk retry was created
       required: false
       schema:
         type: string
-        format: date
+        format: date-time
     - name: in_progress
       in: query
       description: Indicates if the bulk retry is currently in progress
@@ -62,7 +62,7 @@ get:
       description: Limit the returned event count (max 250)
       required: false
       schema:
-        type: number
+        type: integer
   responses:
     '200':
       description: OK

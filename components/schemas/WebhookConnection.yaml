@@ -21,24 +21,24 @@ properties:
     description: Associated Ruleset object
   archived_at:
     type: string
-    format: date
+    format: date-time
     description: Date the webhook connection was archived
     readOnly: true
     nullable: true
     default: null
   updated_at:
     type: string
-    format: date
+    format: date-time
     description: Date the webhook connection was last updated
     readOnly: true
   created_at:
     type: string
-    format: date
+    format: date-time
     description: Date the webhook connection was created
     readOnly: true
   paused_at:
     type: string
-    format: date
+    format: date-time
     description: Date the webhook connection was paused
     readOnly: true
   resolved_rules:

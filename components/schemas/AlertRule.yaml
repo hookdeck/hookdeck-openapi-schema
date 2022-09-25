@@ -16,8 +16,7 @@ properties:
       - last_attempt
     description: Algorithm to use when deciding to sent an alert
   interval:
-    type: number
-    format: int32
+    type: integer
     description: Maximum time in MS between each alert
 required:
   - type

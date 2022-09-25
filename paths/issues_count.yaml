@@ -47,35 +47,35 @@ get:
       required: false
       schema:
         type: string
-        format: date
+        format: date-time
     - name: first_seen_at
       in: query
       description: Date the issues were first seen
       required: false
       schema:
         type: string
-        format: date
+        format: date-time
     - name: last_seen_at
       in: query
       description: Date the issues were last seen
       required: false
       schema:
         type: string
-        format: date
+        format: date-time
     - name: dismissed_at
       in: query
       description: Date the issues were dismissed
       required: false
       schema:
         type: string
-        format: date
+        format: date-time
     - name: opened_at
       in: query
       description: Date the issues were opened
       required: false
       schema:
         type: string
-        format: date
+        format: date-time
     - name: order_by
       in: query
       description: The date property to order by
@@ -93,7 +93,7 @@ get:
       description: Limit the returned model count (max 250)
       required: false
       schema:
-        type: number
+        type: integer
         maximum: 250
   responses:
     '200':
@@ -101,7 +101,7 @@ get:
       content:
         application/json:
           schema:
-            type: number
+            type: integer
           example: 10
       headers:
         Retry-After:

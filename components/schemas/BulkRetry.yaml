@@ -19,46 +19,46 @@ properties:
     readOnly: true
   updated_at:
     type: string
-    format: date
+    format: date-time
     description: Last time the bulk retry was updated
     readOnly: true
   created_at:
     type: string
-    format: date
+    format: date-time
     description: Date the bulk retry was created
     readOnly: true
   completed_at:
     type: string
-    format: date
+    format: date-time
     description: Date the bulk retry was completed
     readOnly: true
     nullable: true
     default: null
   cancelled_at:
     type: string
-    format: date
+    format: date-time
     description: Date the bulk retry was cancelled
     readOnly: true
     nullable: true
     default: null
   estimated_batch:
-    type: number
+    type: integer
     description: Number of batches required to complete the bulk retry
     readOnly: true
   processed_batch:
-    type: number
+    type: integer
     description: Number of batches currently processed
     readOnly: true
   estimated_count:
-    type: number
+    type: integer
     description: Number of estimated events to be retried
     readOnly: true
   completed_count:
-    type: number
+    type: integer
     description: Number of events that were successfully delivered
     readOnly: true
   failed_count:
-    type: number
+    type: integer
     description: Number of events that failed to be delivered
     readOnly: true
   progress:

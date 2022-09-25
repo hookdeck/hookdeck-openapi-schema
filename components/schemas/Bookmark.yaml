@@ -25,19 +25,19 @@ properties:
     description: ID of the bookmarked event data
   last_used_at:
     type: string
-    format: date
+    format: date-time
     description: Date the bookmark was last manually triggered
     nullable: true
     default: null
     readOnly: true
   updated_at:
     type: string
-    format: date
+    format: date-time
     description: Date the bookmark was last updated
     readOnly: true
   created_at:
     type: string
-    format: date
+    format: date-time
     description: Date the bookmark was created
     readOnly: true
 

@@ -30,7 +30,7 @@ get:
       required: false
       schema:
         type: string
-        format: date
+        format: date-time
     - name: url
       in: query
       description: HTTP endpoint of the destination
@@ -48,8 +48,7 @@ get:
       description: Limit the returned event count. Max 250.
       required: false
       schema:
-        type: number
-        format: int32
+        type: integer
         maximum: 250
   responses:
     '200':

@@ -18,8 +18,7 @@ properties:
     type: string
     description: Path for the CLI destination
   rate_limit:
-    type: number
-    format: int32
+    type: integer
     description: Limit event attempts to receive per period (max 100/second or 6000/minute)
   rate_limit_period:
     type: string
@@ -34,19 +33,19 @@ properties:
     readOnly: true
   archived_at:
     type: string
-    format: date
+    format: date-time
     description: Date the destination was archived
     readOnly: true
     nullable: true
     default: null
   updated_at:
     type: string
-    format: date
+    format: date-time
     description: Date the destination was last updated
     readOnly: true
   created_at:
     type: string
-    format: date
+    format: date-time
     description: Date the destination was created
     readOnly: true
 example:
