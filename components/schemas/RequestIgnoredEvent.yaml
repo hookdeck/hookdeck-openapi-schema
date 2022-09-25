@@ -1,0 +1,43 @@
+type: object
+description: >-
+  A request ignored event
+properties:
+  id:
+    type: string
+    description: ID of the ignored event
+    readOnly: true
+  team_id:
+    type: string
+    description: ID of the workspace
+    readOnly: true
+  request_id:
+    type: string
+    description: ID of the request
+    readOnly: true
+  ignored_event_cause_id:
+    type: number
+    description: Undocumented
+    readOnly: true
+  cause:
+    type: string
+    description: Undocumented
+    readOnly: true
+  webhook_id:
+    type: string
+    description: ID of the webhook
+    readOnly: true
+  meta:
+    type: array
+    description: Undocumented
+    readOnly: true
+    items:
+      type: string
+
+example:
+  request_id: req_M3ltWOSF8G6oMS9GS9XX
+  team_id: tm_AkLVUIfTy4nn
+  ignored_event_cause_id: 570221994
+  id: 570221994
+  cause: CLI_DISCONNECTED
+  webhook_id: web_Tqy2KliIrX1A
+  meta:

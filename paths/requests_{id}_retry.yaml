@@ -1,23 +1,29 @@
-put:
-  operationId: retryEvent
-  summary: Retry an event
-  description: This endpoint manually queues an event for retry.
+post:
+  operationId: retryRequest
+  summary: Retry a request
+  description: >-
+    This endpoint triggers a retry for an eligible request. The response contains the updated ```request``` and an array of created ```events``` if any were created.
   tags:
-    - Events
+    - Requests
   parameters:
     - name: id
       in: path
-      description: Event ID
+      description: Request ID
       required: true
       schema:
         type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/RetryRequestRequest.yaml
   responses:
     '200':
       description: OK
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/RetryEventResponse.yaml
+            $ref: ../components/schemas/RetryRequestResponse.yaml
       headers:
         Retry-After:
           $ref: ../components/headers/Retry-After.yaml

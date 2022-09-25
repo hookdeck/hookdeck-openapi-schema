@@ -1,0 +1,12 @@
+type: object
+properties:
+  webhook_ids:
+    type: array
+    description: Subset of ```webhook_ids``` to re-run the event logic on. Useful to retry only specific ignored_events
+    items:
+      type: string
+
+example:
+  webhook_ids:
+    - web_lfMH5m6GpkO1
+    - web_I01KDNgvbS5G

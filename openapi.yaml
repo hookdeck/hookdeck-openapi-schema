@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: '2022-03-01'
+  version: '2022-10-01'
   title: Hookdeck Admin REST API
   description: >-
     # Getting started
@@ -354,6 +354,9 @@ components:
     basicAuth:
       type: http
       scheme: basic
+    bearerAuth:
+      type: http
+      scheme: bearer
 servers:
   - url: https://api.hookdeck.com/{version}
     description: Production API
@@ -366,6 +369,7 @@ servers:
         default: '2022-03-01'
 security:
   - basicAuth: []
+  - bearerAuth: []
 tags:
   - name: Webhook Connections
     description: >-
@@ -400,7 +404,7 @@ tags:
       A ruleset defines a group of rules that can be used across many connections.
   - name: Requests
     description: >-
-      A request represent a webhook received by Hookdeck.
+      A request represents a webhook received by Hookdeck.
   - name: Events
     description: >-
       An event is any request that Hookdeck receives from a source.
@@ -602,6 +606,17 @@ paths:
     $ref: paths/rulesets_{id}_archive.yaml
   /rulesets/{id}/unarchive:
     $ref: paths/rulesets_{id}_unarchive.yaml
+
+  /requests:
+    $ref: paths/requests.yaml
+  /requests/{id}:
+    $ref: paths/requests_{id}.yaml
+  /requests/{id}/retry:
+    $ref: paths/requests_{id}_retry.yaml
+  /requests/{id}/events:
+    $ref: paths/requests_{id}_events.yaml
+  /requests/{id}/ignored_events:
+    $ref: paths/requests_{id}_ignored__events.yaml
 
   /events:
     $ref: paths/events.yaml

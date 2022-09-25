@@ -1,13 +1,16 @@
-put:
-  operationId: retryEvent
-  summary: Retry an event
-  description: This endpoint manually queues an event for retry.
+get:
+  operationId: getRequest
+  summary: Retrieve a request
+  description: >-
+    This endpoint retrieves a specific request.
+
+    The response contains the ```data``` object with the properties ```body```, ```headers```, ```path``` and ```query``` representing the original data for that request.
   tags:
-    - Events
+    - Requests
   parameters:
     - name: id
       in: path
-      description: Event ID
+      description: Request ID
       required: true
       schema:
         type: string
@@ -17,7 +20,7 @@ put:
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/RetryEventResponse.yaml
+            $ref: ../components/schemas/Request.yaml
       headers:
         Retry-After:
           $ref: ../components/headers/Retry-After.yaml

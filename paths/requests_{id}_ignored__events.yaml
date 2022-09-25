@@ -1,23 +1,40 @@
-put:
-  operationId: retryEvent
-  summary: Retry an event
-  description: This endpoint manually queues an event for retry.
+get:
+  operationId: getRequestIgnoredEvents
+  summary: Retrieve request ignored events
+  description: >-
+    This endpoint retrieves the ignored events associated with a request.
   tags:
-    - Events
+    - Requests
   parameters:
     - name: id
       in: path
-      description: Event ID
+      description: Request ID
       required: true
       schema:
         type: string
+    - name: id
+      in: query
+      description: Filter by ignored events IDs
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    - name: limit
+      in: query
+      description: Limit the returned event count. Max 250.
+      required: false
+      schema:
+        type: number
+        format: int32
+        maximum: 250
   responses:
     '200':
       description: OK
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/RetryEventResponse.yaml
+            $ref: ../components/schemas/RequestIgnoredEventsResponse.yaml
       headers:
         Retry-After:
           $ref: ../components/headers/Retry-After.yaml
