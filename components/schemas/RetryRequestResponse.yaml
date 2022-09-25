@@ -1,0 +1,56 @@
+type: object
+description: Retry request response
+properties:
+  request:
+    $ref: ./Request.yaml
+  events:
+    type: array
+    items:
+      $ref: ./Event.yaml
+      
+example:
+  request:
+    id: req_M3ltWOSF8G6oMS9GS9XX
+    team_id: tm_AkLVUIfTy4nn
+    verified: false
+    rejection_cause:
+    original_event_data_id: edt_3DzFKL5UU8TKsXJjgct7
+    duplicate_hash:
+    duplicate_hits:
+    ingest_priority: NORMAL
+    ingested_at: '2022-07-29T13:55:10.238Z'
+    source_id: src_iEfHpkswbzGW
+    updated_at: '2022-07-29T13:55:15.369Z'
+    created_at: '2022-07-29T13:55:15.092Z'
+    events_count: 1
+    cli_events_count: 0
+    ignored_count: 0
+    data:
+      headers:
+        content-length: '18'
+        content-type: application/json
+        postman-token: 56fcfa62-9d0e-450f-a638-474b88f928ea
+        user-agent: PostmanRuntime/7.29.2
+        x-hookdeck-original-ip: 172.18.0.1
+      body:
+        example: true
+      query: ''
+      parsed_query: {}
+      path: "/"
+  events:
+  - id: evt_wP4CcyPTYjwndo3R2s
+    team_id: tm_AkLVUIfTy4nn
+    webhook_id: web_lfMH5m6GpkO1
+    source_id: src_iEfHpkswbzGW
+    destination_id: des_hBX0AHpP3lji
+    attempts: 1
+    response_status: 200
+    last_attempt_at: '2022-07-29T13:55:16.420Z'
+    next_attempt_at:
+    successful_at: '2022-07-29T13:55:16.607Z'
+    updated_at: '2022-07-29T13:55:16.609Z'
+    created_at: '2022-07-29T13:55:15.291Z'
+    status: SUCCESSFUL
+    cli_id:
+    request_id: req_M3ltWOSF8G6oMS9GS9XX
+    event_data_id: edt_3DzFKL5UU8TKsXJjgct7

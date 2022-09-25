@@ -1,0 +1,41 @@
+description: Paginated response of requests
+allOf:
+  - $ref: ./PaginatedResponse.yaml
+  - type: object
+    properties:
+      models:
+        type: array
+        items:
+          $ref: ./RequestIgnoredEvent.yaml
+        readOnly: true
+      
+example:
+  pagination:
+    order_by: id
+    dir: desc
+    limit: 100
+  count: 3
+  models:
+  - request_id: req_M3ltWOSF8G6oMS9GS9XX
+    team_id: tm_AkLVUIfTy4nn
+    ignored_event_cause_id: 1475491804
+    id: 1475491804
+    cause: FILTERED
+    webhook_id: web_E2iWnvsY0RQE
+    meta:
+    - body
+  - request_id: req_M3ltWOSF8G6oMS9GS9XX
+    team_id: tm_AkLVUIfTy4nn
+    ignored_event_cause_id: 570221994
+    id: 570221994
+    cause: CLI_DISCONNECTED
+    webhook_id: web_Tqy2KliIrX1A
+    meta:
+  - request_id: req_M3ltWOSF8G6oMS9GS9XX
+    team_id: tm_AkLVUIfTy4nn
+    ignored_event_cause_id: -1330322110
+    id: -1330322110
+    cause: ARCHIVED
+    webhook_id: web_I01KDNgvbS5G
+    meta:
+  

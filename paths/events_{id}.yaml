@@ -22,9 +22,6 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/Event.yaml
-          examples:
-            Event:
-              $ref: ../components/examples/Event.yaml
       headers:
         Retry-After:
           $ref: ../components/headers/Retry-After.yaml

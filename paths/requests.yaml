@@ -1,0 +1,118 @@
+get:
+  operationId: getAllRequests
+  summary: Retrieve all requests
+  description: >-
+    This endpoint lists all request, or a subset of requests.
+
+    Requests are sorted by ```ingested_at``` date.
+
+
+    ### Filtering requests
+
+    To filter the list of requests, use only supported operators.
+
+
+    For example, append ```?created_at[gte]=2021-10-12&created_at[lte]=2021-10-13``` to retrieve requests for that specific 24-hour period.
+
+
+    > Requests past your workspace archival window are not returned
+
+  tags:
+    - Requests
+  parameters:
+    - name: id
+      in: query
+      description: Filter by requests ids
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    - name: rejection_cause
+      in: query
+      description: Filter by rejection cause
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    - name: source_id
+      in: query
+      description: Filter by source ids
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    - name: verified
+      in: query
+      description: Filter by verification status
+      required: false
+      schema:
+        type: boolean
+    - name: body
+      in: query
+      description: URL Encoded string of the JSON to match to the data body
+      required: false
+      schema:
+        type: string
+    - name: headers
+      in: query
+      description: URL Encoded string of the JSON to match to the data headers
+      required: false
+      schema:
+        type: string
+    - name: parsed_query
+      in: query
+      description: URL Encoded string of the JSON to match to the parsed query (JSON representation of the query)
+      required: false
+      schema:
+        type: string
+    - name: path
+      in: query
+      description: URL Encoded string of the string to match partially to the path
+      required: false
+      schema:
+        type: string
+    - name: limit
+      in: query
+      description: Limit the returned requests count. Max 250.
+      required: false
+      schema:
+        type: number
+        format: int32
+        maximum: 250
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/RequestsResponse.yaml
+      headers:
+        Retry-After:
+          $ref: ../components/headers/Retry-After.yaml
+        X-RateLimit-Limit:
+          $ref: ../components/headers/X-RateLimit-Limit.yaml
+        X-RateLimit-Limit-Remaining:
+          $ref: ../components/headers/X-RateLimit-Remaining.yaml
+        X-RateLimit-Limit-Reset:
+          $ref: ../components/headers/X-RateLimit-Reset.yaml
+    '400':
+      $ref: ../components/responses/400.yaml
+    '401':
+      $ref: ../components/responses/401.yaml
+    '403':
+      $ref: ../components/responses/403.yaml
+    '404':
+      $ref: ../components/responses/404.yaml
+    '413':
+      $ref: ../components/responses/413.yaml
+    '422':
+      $ref: ../components/responses/422.yaml
+    '429':
+      $ref: ../components/responses/429.yaml
+    '500':
+      $ref: ../components/responses/500.yaml
+    '503':
+      $ref: ../components/responses/503.yaml

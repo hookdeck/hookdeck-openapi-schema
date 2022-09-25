@@ -1,8 +1,8 @@
 get:
-  operationId: getAllEvents
-  summary: Retrieve all events
+  operationId: getRequestEvents
+  summary: Retrieve request events
   description: >-
-    This endpoint lists all events, or a subset of events.
+    This endpoint retrieves the events associated with a request.
 
 
     ### Filtering events
@@ -28,8 +28,14 @@ get:
 
     CLI events are excluded from the results by default. To query CLI events, use ```/events?cli_id[any]=true```.
   tags:
-    - Events
+    - Requests
   parameters:
+    - name: id
+      in: path
+      description: Request ID
+      required: true
+      schema:
+        type: string
     - name: id
       in: query
       description: Filter by event ids

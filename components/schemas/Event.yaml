@@ -94,19 +94,37 @@ properties:
     format: date
     description: Date the event  was created
     readOnly: true
+  data:
+    type: object
+    readOnly: true
+    nullable: true
+    default: null
 example:
-  id: evt_5b3mzbxk83deakr
-  team_id: tm_5b3mzbxk83c0k7i
-  webhook_id: web_5b3mzbxk83dcij0
-  source_id: src_5b3mzbxk83dciin
-  destination_id: des_5b3mzbxk83dciim
-  cli_id:
-  event_data_id: evtreq_Ixux8vb2VBnZIuieVFPcUF9d
-  attempts: 0
-  status: QUEUED
-  response_status:
-  last_attempt_at:
+  id: evt_njCeMZHzNhJWdkkZ7PLCfEw5
+  team_id: tm_nlcetVe8k1lMAY0KR0OxNuHr
+  webhook_id: web_UfM5ZY2wxLD6sLhDaKMcx5wp
+  source_id: src_9YmY0SHklrv6zBQz78cKGwSW
+  destination_id: des_fYYCay655IHwbOMhIaUXtNq2
+  attempts: 4
+  response_status: 422
+  last_attempt_at: '2021-08-02T13:52:16.439Z'
   next_attempt_at:
-  successful_at:
-  updated_at: '2020-03-22T18:24:01.031Z'
-  created_at: '2020-03-22T18:24:01.035Z'
+  successful_at: '2021-08-01T21:56:35.181Z'
+  updated_at: '2021-08-02T13:52:16.813Z'
+  created_at: '2021-08-01T21:44:57.513Z'
+  status: FAILED
+  event_data_id: evtreq_HlJhb39nsjIP0FDsU3SY0fo7
+  cli_id:
+  data:
+    headers:
+      content-length: '20'
+      x-original-url: '/e/src_9YmY0SHklrv6zBQz78cKGwSW'
+      cookie: ''
+      x-client-version: FirebaseCLI/undefined
+      content-type: application/json
+      user-agent: FirebaseCLI/undefined
+    body:
+      test: true
+    query: ''
+    parsed_query: {}
+    path: '/'
